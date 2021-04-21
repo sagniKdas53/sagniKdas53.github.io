@@ -1,11 +1,17 @@
-.tt{
-    max-width: 30%;
-    margin-top:2%;
-    margin-left: 2%;
+#body {
+  background-color: white;
 }
 
-.bb{
-    max-width: 30%;
-    margin-top:2%;
-    margin-left: 2%;
+#body.p {
+  margin-left: 80px;
+  text-align: left;
+  background-color: white;
+}
+
+#body.p.span {
+  font-family: sans-serif;
+}
+
+#container{
+    margin:5px;
 }
