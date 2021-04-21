@@ -4,16 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!--<link rel="stylesheet" href="style.css">-->
+    <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <title>Tests</title>
   </head>
 
   <body>
-    <p><strong>Timer:</strong></p>
-    <p>Energy will fill up at :</p>
-    <p id="left">00</p>
-    <br />
+    <div class="tt">
+      <h3>Timer:</h3>
+      <p id="timr">00</p>
+    </div>
+    <div class="tt">
+      <h3>Energy will fill up at :</h3>
+      <p id="left">00</p>
+      <br />
+    </div>
     <h4>Max Energy:</h4>
     <input type="text" id="max" />
     <br />
@@ -22,7 +28,10 @@
     <br />
     <h4>Minutes per Energy:</h4>
     <input type="text" id="mpe" />
-
+    <div class = "bb">
     <button onclick="compute()">Calc</button>
+    <button onclick="set()">Load</button>
+  </div>
+    <script type="text/javascript">set();</script>
   </body>
 </html>
