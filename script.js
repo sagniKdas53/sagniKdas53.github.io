@@ -45,50 +45,51 @@ const set = function () {
   document.getElementById("mpe").value = Cookies.get("mpe");
   document.getElementById("time_str").innerHTML = end_timer.toLocaleString();
   //compute();
-  mpe_global = parseInt(Cookies.get("mpe"))*60000;
+  mpe_global = parseInt(Cookies.get("mpe")) * 60000;
   live = setInterval(liveUpdate, 1000);
 };
 
 const liveUpdate = function () {
   //console.log("live update working");
   //console.log(`${ms_left_copy}-${ms_left}=${ms_left_copy-ms_left}===${mpe_global}?=>${mpe===(ms_left_copy-ms_left)}`);
-  var st = document.getElementById("ce").value;
-  if((ms_left_copy-ms_left) === mpe_global){
-    st++;
+  //var st = document.getElementById("ce").value;
+  if ((ms_left_copy - ms_left) === mpe_global) {
     console.log(`Current Energy = ${st}`);
-    document.getElementById("ce").value = st;
-    ms_left_copy-=mpe;
-  }
-  if(ms_left<= 0){
-    //console.log(ms_left);
-    Cookies.set("curr", st, { expires: 1, path: "" });
-    clearInterval(live);
+    //document.getElementById("ce").value = st;
+    ms_left_copy -= mpe;
   }
   document.getElementById("t_left").innerHTML = human_time(ms_left);
   ms_left -= 1000;
+  update_ce();
+  if (ms_left <= 0) {
+    //console.log(ms_left);
+    //Cookies.set("curr", st, { expires: 1, path: "" });
+    clearInterval(live);
+    console.log("over");
+    window.alert("Energy Full");
+  }
 };
 
 const human_time = function (value) {
-  let seconds = 0,
-    minutes = 0,
-    hours = 0,
-    days = 0;
-  seconds = value / 1000;
-  if (seconds > 60) {
-    minutes = seconds / 60;
-    seconds = seconds - minutes * 60;
-    if (minutes > 60) {
-      hours = minutes / 60;
-      minutes = minutes - hours * 60;
-      if (hours > 24) {
-        days = hours / 24;
-        hours = hours - days * 24;
-      }
-    }
-  }
-  //console.log(value, days, hours, minutes, seconds);
-  return `${Math.floor(days)} Days 
-          ${Math.floor(hours)} Hours 
-          ${Math.floor(minutes)} Minutes
-          ${Math.floor(seconds)} Seconds`;
+  var seconds = value/1000;
+  var days = Math.floor(seconds / (3600 * 24));
+  seconds -= days * 3600 * 24;
+  var hrs = Math.floor(seconds / 3600);
+  seconds -= hrs * 3600;
+  var mnts = Math.floor(seconds / 60);
+  seconds -= mnts * 60;
+  //console.log(days + " days, " + hrs + " Hrs, " + mnts + " Minutes, " + seconds + " Seconds");
+  return `${Math.trunc(days)} Days 
+          ${Math.trunc(hrs)} Hours 
+          ${Math.trunc(mnts)} Minutes
+          ${Math.trunc(seconds)} Seconds`;
 };
+
+
+const update_ce = function () {
+  const diff_init = giveTime() - parseInt(Cookies.get("init"));
+  const e_units = diff_init / mpe_global;
+  let ste = parseInt(document.getElementById("ce").value);
+  ste += e_units;
+  document.getElementById("ce").value = Math.trunc(ste);
+}
