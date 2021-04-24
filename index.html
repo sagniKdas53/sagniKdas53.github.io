@@ -1,53 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="js.cookie.min.js"></script>
+    <script src="script.js"></script>
+    <title>Tests</title>
+  </head>
 
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-  <script src="script.js"></script>
-  <title>Tests</title>
-</head>
-
-<body>
-  <div class="container">
-  <p><span>Timer: </span>
-    <span id="t_left">00</span>
-  </p>
-  <p>
-    <span>Energy will fill up at:&nbsp;</span><span id="time_str">00</span>
-  </p>
-  <p>
-    <span>&nbsp;&nbsp;&nbsp; Max Energy:&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; <input id="max" type="text" />
-      <br />
-    </span>
-  </p>
-  <p>
-    <span>&nbsp;&nbsp;&nbsp; Current Energy:&nbsp;&nbsp; &nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp; <input id="ce" type="text" />
-      <br />
-    </span>
-  </p>
-  <p>
-    <span>&nbsp;&nbsp;&nbsp; Minutes per Energy:&nbsp;&nbsp;&nbsp; </span><span><input id="mpe" type="text" /></span>
-  </p>
-  <blockquote>
-    <div>
-      <span><button onclick="compute()">Calculate</button>
-        <button onclick="set()">Load from Cookies</button></span>
+  <body>
+    <div class="container">
+      <p>
+        <span>Timer: </span>
+        <span id="t_left">00</span>
+      </p>
+      <p>
+        <span>Energy will fill up at:&nbsp;</span><span id="time_str">00</span>
+      </p>
+      <p>
+        <span
+          >&nbsp;&nbsp;&nbsp; Max Energy:&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; <input id="max" type="text" />
+          <br />
+        </span>
+      </p>
+      <p>
+        <span
+          >&nbsp;&nbsp;&nbsp; Current Energy:&nbsp;&nbsp; &nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; <input id="ce" type="text" />
+          <br />
+        </span>
+      </p>
+      <p>
+        <span>&nbsp;&nbsp;&nbsp; Minutes per Energy:&nbsp;&nbsp;&nbsp; </span
+        ><span><input id="mpe" type="text" /></span>
+      </p>
+      <blockquote>
+        <div>
+          <span
+            ><button onclick="Count()">Calculate</button>
+            <button onclick="loadCookies()">Load from Cookies</button></span
+          >
+        </div>
+      </blockquote>
+      <div></div>
+      <div>
+        <span>
+          <script type="text/javascript">
+            loadCookies();
+          </script>
+        </span>
+      </div>
     </div>
-  </blockquote>
-  <div></div>
-  <div>
-    <span>
-      <script type="text/javascript">
-        set();
-      </script>
-    </span>
-  </div>
-</div>
-</body>
+  </body>
 </html>

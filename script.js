@@ -1,27 +1,50 @@
-let ms_left;
-let ms_left_copy;
+let ms_left =0;
 let live;
+let ste;
 let mpe_global;
 
-const get = function () {
-  const max = document.getElementById("max").value;
-  const current = document.getElementById("ce").value;
-  const mpe = document.getElementById("mpe").value;
+const getNSetCookies = function () {
+  const max = parseInt(document.getElementById("max").value);
+  const current = parseInt(document.getElementById("ce").value);
+  const mpe = parseInt(document.getElementById("mpe").value);
   Cookies.set("max", max, { expires: 1, path: "" });
   Cookies.set("curr", current, { expires: 1, path: "" });
   Cookies.set("mpe", mpe, { expires: 1, path: "" });
-  return [mpe, current, max];
+  const timeNow = giveTime();
+  const minutes = (max - current) * mpe;
+  const finalTime = minutes * 60000 + timeNow;
+  Cookies.set("init", timeNow, { expires: 1, path: "" });
+  Cookies.set("end", finalTime, { expires: 1, path: "" });
+  console.log("done setting");
 };
 
-const compute = function () {
-  const res = get();
-  const tt = giveTime();
-  const value = (res[2] - res[1]) * res[0];
-  const final = value * 60000 + tt;
-  Cookies.set("init", tt, { expires: 1, path: "" });
-  Cookies.set("end", final, { expires: 1, path: "" });
-  set();
+const loadCookies = function () {
+  const epm = Cookies.get("mpe");
+  const prev = parseInt(Cookies.get("curr"));
+ 
+  document.getElementById("max").value = Cookies.get("max");
+  document.getElementById("mpe").value = epm;
+  mpe_global = parseInt(epm) * 60000;
+  const last = parseInt(Cookies.get("init")); 
+  
+  const upadte_e = (giveTime()-last);
+  const end = parseInt(Cookies.get("end"));
+  ms_left = end - giveTime();
+
+  document.getElementById("t_left").innerHTML = human_time(ms_left);
+  const currentEnergy = prev + Math.trunc(upadte_e/mpe_global);
+  document.getElementById("ce").value = currentEnergy;
+  document.getElementById("time_str").innerHTML =new Date(end).toLocaleString();
+  console.log("done loading");
 };
+
+const Count = function () {
+  getNSetCookies();
+  loadCookies();
+  live = setInterval(liveUpdate, 1000);
+  console.log("done adding timer");
+};
+
 
 const giveTime = function () {
   const current = new Date();
@@ -29,36 +52,15 @@ const giveTime = function () {
   return time;
 };
 
-const set = function () {
-  const end_val = Cookies.get("end");
-  const end_timer = new Date(parseInt(end_val));
-  const now_t = new Date();
-  ms_left = end_timer.getTime() - now_t.getTime();
-  ms_left_copy = ms_left;
-  document.getElementById("t_left").innerHTML = human_time(ms_left);
-  document.getElementById("max").value = Cookies.get("max");
-  const currt =
-    parseInt(Cookies.get("curr")) +
-    Math.floor((now_t.getTime() - parseInt(Cookies.get("init"))) / 360000);
-  document.getElementById("ce").value = currt;
-  document.getElementById("mpe").value = Cookies.get("mpe");
-  document.getElementById("time_str").innerHTML = end_timer.toLocaleString();
-  mpe_global = parseInt(Cookies.get("mpe")) * 60000;
-  live = setInterval(liveUpdate, 1000);
-};
+
 
 const liveUpdate = function () {
-  if (ms_left_copy - ms_left === mpe_global) {
-    console.log(`Current Energy = ${st}`);
-    ms_left_copy -= mpe;
-  }
   document.getElementById("t_left").innerHTML = human_time(ms_left);
   ms_left -= 1000;
-  update_ce();
+  updateCurrEn();
   if (ms_left <= 0) {
-    clearInterval(live);
-    console.log("over");
     window.alert("Energy Full");
+    clearInterval(live);
   }
 };
 
@@ -77,10 +79,21 @@ const human_time = function (value) {
           ${Math.trunc(seconds)} Seconds`;
 };
 
-const update_ce = function () {
-  const diff_init = giveTime() - parseInt(Cookies.get("init"));
+const updateCurrEn = function () {
+  const start =parseInt(Cookies.get("init"));
+  const diff_init = giveTime() - start;
   const e_units = diff_init / mpe_global;
-  let ste = parseInt(document.getElementById("ce").value);
+  if(e_units >=0){
+  ste = parseInt(document.getElementById("ce").value);
   ste += e_units;
-  document.getElementById("ce").value = Math.trunc(ste);
+  document.getElementById("ce").value = Math.trunc(ste);}
+  else{
+    console.log(e_units);
+    clearInterval(live);
+  }
 };
+
+const save = function(){
+  Cookies.set("curr", ste, { expires: 1, path: "" });
+  Cookies.set("init", giveTime(), { expires: 1, path: "" });
+}
