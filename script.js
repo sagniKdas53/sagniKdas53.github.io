@@ -1,105 +1,93 @@
-let ms_left = 0;
-let live;
-let ste;
-let mpe_global;
+let current = 0;
+let max = 0;
+let perUnit = 0;
+let now = 0;
+let end = 0;
+let value = {
+    "savedAt": "now",
+    "expiresAt": "end",
+    "perUnit": "perUnit",
+    "max": "max",
+    "current": "current"
+};
 
-function test() {
-    document.getElementById("res").innerHTML = "Testing";
+function loadData() {
+    try {
+        value.savedAt = parseInt(Cookies.get("savedAt"));
+        value.expiresAt = parseInt(Cookies.get("ExpAt"));
+        value.perUnit = parseInt(Cookies.get("perUnit"));
+        value.max = parseInt(Cookies.get("max"));
+        value.current = parseInt(Cookies.get("current"));
+        //console.log(typeof value.max);
+        if (Cookies.get("saveMaxState") == 'true') {
+            document.getElementById("MaxEn").checked = true;
+            document.getElementById("max").value = value.max;
+        } else {
+            document.getElementById("MaxEn").checked = false;
+            document.getElementById("max").value = "";
+        }
+        if (Cookies.get("savePerState") == 'true') {
+            document.getElementById("perEn").checked = true;
+            document.getElementById("perUnit").value = value.perUnit;
+        } else {
+            document.getElementById("perEn").checked = false;
+            document.getElementById("perUnit").value = "";
+        }
+    } catch (err) {
+        console.log("Look a error " + err.message);
+    }
+}
+
+function saveData() {
+    value = {
+        "savedAt": now,
+        "expiresAt": end,
+        "perUnit": perUnit,
+        "max": max,
+        "current": current
+    };
+}
+
+function saveCookies() {
+    Cookies.set("max", max, { path: "" });
+    Cookies.set("savedAt", value.savedAt, { path: "" });
+    Cookies.set("ExpAt", value.expiresAt, { path: "" });
+    Cookies.set("current", current, { path: "" });
+    Cookies.set("perUnit", perUnit, { path: "" });
+    Cookies.set("saveMaxState", document.getElementById("MaxEn").checked, { path: "" });
+    Cookies.set("savePerState", document.getElementById("perEn").checked, { path: "" });
+}
+
+function dispResult(str) {
+    document.getElementById("res").innerHTML = str;
     return false;
 }
 
-const getNSetCookies = function() {
-    const max = parseInt(document.getElementById("max").value);
-    const current = parseInt(document.getElementById("ce").value);
-    const mpe = parseInt(document.getElementById("mpe").value);
-    Cookies.set("max", max, { expires: 1, path: "" });
-    Cookies.set("curr", current, { expires: 1, path: "" });
-    Cookies.set("mpe", mpe, { expires: 1, path: "" });
-    const timeNow = giveTime();
-    const minutes = (max - current) * mpe;
-    const finalTime = minutes * 60000 + timeNow;
-    Cookies.set("init", timeNow, { expires: 1, path: "" });
-    Cookies.set("end", finalTime, { expires: 1, path: "" });
-    console.log("done setting");
-};
-
-const loadCookies = function() {
-    const epm = Cookies.get("mpe");
-    const prev = parseInt(Cookies.get("curr"));
-
-    document.getElementById("max").value = Cookies.get("max");
-    document.getElementById("mpe").value = epm;
-    mpe_global = parseInt(epm) * 60000;
-    const last = parseInt(Cookies.get("init"));
-
-    const upadte_e = (giveTime() - last);
-    const end = parseInt(Cookies.get("end"));
-    ms_left = end - giveTime();
-
-    document.getElementById("t_left").innerHTML = human_time(ms_left);
-    const currentEnergy = prev + Math.trunc(upadte_e / mpe_global);
-    document.getElementById("ce").value = currentEnergy;
-    //document.getElementById("time_str").innerHTML = new Date(end).toLocaleString();
-    console.log("done loading");
-};
-
-const Count = function() {
-    getNSetCookies();
-    loadCookies();
-    live = setInterval(liveUpdate, 1000);
-    console.log("done adding timer");
-};
-
-
-const giveTime = function() {
-    const current = new Date();
-    const time = current.getTime();
-    return time;
-};
-
-
-
-const liveUpdate = function() {
-    document.getElementById("res").innerHTML = human_time(ms_left);
-    ms_left -= 1000;
-    updateCurrEn();
-    if (ms_left <= 0) {
-        window.alert("Energy Full");
-        clearInterval(live);
-    }
+function getData() {
+    current = parseInt(document.getElementById("current").value);
+    max = parseInt(document.getElementById("max").value);
+    perUnit = parseInt(document.getElementById("perUnit").value);
+    now = Date.now();
+    end = getEnd();
+    saveData();
+    console.log(value);
+    saveCookies();
+    dispResult(getEndStr(getEnd() - now));
     return false;
-};
+}
 
-const human_time = function(value) {
-    var seconds = value / 1000;
-    var days = Math.floor(seconds / (3600 * 24));
-    seconds -= days * 3600 * 24;
-    var hrs = Math.floor(seconds / 3600);
-    seconds -= hrs * 3600;
-    var mnts = Math.floor(seconds / 60);
-    seconds -= mnts * 60;
+function getEnd() {
+    return parseInt(now + ((max - current) * perUnit) * 60000);
+}
 
-    return `${Math.trunc(days)} Days 
-          ${Math.trunc(hrs)} Hours 
-          ${Math.trunc(mnts)} Minutes
-          ${Math.trunc(seconds)} Seconds`;
-};
+function getEndStr(duration) {
+    var seconds = Math.floor((duration / 1000) % 60);
+    var minutes = Math.floor((duration / (1000 * 60)) % 60);
+    var hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
-const updateCurrEn = function() {
-    const start = parseInt(Cookies.get("init"));
-    const diff_init = giveTime() - start;
-    const e_units = diff_init / mpe_global;
-    if (e_units >= 0) {
-        ste = parseInt(document.getElementById("ce").value);
-        ste += e_units;
-        document.getElementById("ce").value = Math.trunc(ste);
-    } else {
-        console.log(e_units);
-        clearInterval(live);
-    }
-};
+    hours = (hours < 10) ? "0" + hours : hours;
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-const save = function() {
-    Cookies.set("curr", ste, { expires: 1, path: "" });
-    Cookies.set("init", giveTime(), { expires: 1, path: "" });
+    return hours + ":" + minutes + ":" + seconds;
 }
