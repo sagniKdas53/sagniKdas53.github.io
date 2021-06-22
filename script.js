@@ -49,13 +49,13 @@ function saveData() {
 }
 
 function saveCookies() {
-    Cookies.set("max", max, { path: "" });
-    Cookies.set("savedAt", value.savedAt, { path: "" });
-    Cookies.set("ExpAt", value.expiresAt, { path: "" });
-    Cookies.set("current", current, { path: "" });
-    Cookies.set("perUnit", perUnit, { path: "" });
-    Cookies.set("saveMaxState", document.getElementById("MaxEn").checked, { path: "" });
-    Cookies.set("savePerState", document.getElementById("perEn").checked, { path: "" });
+    Cookies.set("max", max, { path: "", expiry: 30 });
+    Cookies.set("savedAt", value.savedAt, { path: "", expiry: 30 });
+    Cookies.set("ExpAt", value.expiresAt, { path: "", expiry: 30 });
+    Cookies.set("current", current, { path: "", expiry: 30 });
+    Cookies.set("perUnit", perUnit, { path: "", expiry: 30 });
+    Cookies.set("saveMaxState", document.getElementById("MaxEn").checked, { path: "", expiry: 30 });
+    Cookies.set("savePerState", document.getElementById("perEn").checked, { path: "", expiry: 30 });
 }
 
 function dispResult(str) {
