@@ -5,6 +5,9 @@ let now = 0;
 let end = 0;
 let savedAt = 0;
 let expiresAt = 0;
+let timeinterval = 0;
+let accumulator = 0;
+let refresh = 2000;
 
 function loadData() {
     try {
@@ -39,10 +42,6 @@ function loadData() {
     }
 }
 
-function saveData() {
-    savedAt = now;
-    expiresAt = end;
-}
 
 function saveCookies() {
     Cookies.set("max", max, { expires: 30 });
@@ -63,9 +62,11 @@ function getData() {
     } else {
         now = Date.now();
         end = getEnd();
-        saveData();
+        savedAt = now;
+        expiresAt = end;
         saveCookies();
-        updateClock();
+        //updateClock();
+        timeinterval = setInterval(updateClock, refresh);
     }
     return false;
 }
@@ -107,6 +108,7 @@ function initClock(endtime) {
 
 function updateClock() {
     console.log("clock loop");
+    accumulator += 1;
     const clock = document.getElementById('clockdiv');
     const daysSpan = clock.querySelector('.days');
     const hoursSpan = clock.querySelector('.hours');
@@ -118,9 +120,24 @@ function updateClock() {
     hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
+    if (accumulator == ((perUnit * 60000) / refresh)) {
+        current = parseInt(document.getElementById("current").value) + 1;
+        document.getElementById("current").value = current;
+        Cookies.set("current", current, { expires: 30 });
+        Cookies.set("savedAt", Date.now(), { expires: 30 });
+        /* this can be used to calcuale on initilaization if the tumer has run out and if it has, 
+        then we can show default values else load the new ones and upate the current one
+        there is a log in savinng the cookies for example this: 1624391420967-1624391362958 = 58009
+        insted of 60000
+        */
+        accumulator = 0;
+    }
     if (t.total <= 0) {
         clearInterval(timeinterval);
-    }else{
-    const timeinterval = setInterval(updateClock, 5000);
-}}
+        daysSpan.innerHTML = '0';
+        hoursSpan.innerHTML = '00';
+        minutesSpan.innerHTML = '00';
+        secondsSpan.innerHTML = '00';
+    }
+    //updateClock();
+}

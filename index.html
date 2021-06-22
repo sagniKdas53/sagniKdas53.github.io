@@ -27,7 +27,7 @@
                 </div>
             </div>
         </nav>
-        <div class="mb-1" id="res">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xs-4 mb-1" id="res">
             <div id="clockdiv">
                 <div>
                     <span class="days"></span>
@@ -51,7 +51,10 @@
             <div class="col-8 col-sm-6 col-md-4 col-lg-4 col-xs-4">
                 <form class="form-horizontal" autocomplete="off">
                     <div class="input-group">
-                        <span class="input-group-text mb-3">Current</span>
+                        <div class="input-group-text mb-3">
+                        <input class="form-check-input mt-0" type="checkbox" id="SavedEn" checked />
+                    </div>
+                        <span class="input-group-text mb-3">C</span>
                         <input type="number" class="form-control mb-3" placeholder="Current AP " id="current" />
                     </div>
 
@@ -81,7 +84,7 @@
             loadData();
             let deadline = new Date();
             initClock(deadline);
-            console.log("here");
+            console.log("initialized");
         });
     </script>
 </body>
