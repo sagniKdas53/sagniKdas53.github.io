@@ -8,7 +8,7 @@
 
     <title>AP Timer</title>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-
+    <link rel="stylesheet" href="clock.css">
     <script type="text/javascript" src="script.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
@@ -27,13 +27,32 @@
                 </div>
             </div>
         </nav>
-        <div class="mb-1" id="res">Time</div>
+        <div class="mb-1" id="res">
+            <div id="clockdiv">
+                <div>
+                    <span class="days"></span>
+                    <div class="smalltext">Days</div>
+                </div>
+                <div>
+                    <span class="hours"></span>
+                    <div class="smalltext">Hours</div>
+                </div>
+                <div>
+                    <span class="minutes"></span>
+                    <div class="smalltext">Minutes</div>
+                </div>
+                <div>
+                    <span class="seconds"></span>
+                    <div class="smalltext">Seconds</div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-8 col-sm-6 col-md-4 col-lg-4 col-xs-4">
                 <form class="form-horizontal" autocomplete="off">
                     <div class="input-group">
                         <span class="input-group-text mb-3">Current</span>
-                        <input type="number " class="form-control mb-3" placeholder="Current AP " id="current" />
+                        <input type="number" class="form-control mb-3" placeholder="Current AP " id="current" />
                     </div>
 
                     <div class="input-group">
@@ -41,14 +60,14 @@
                             <input class="form-check-input mt-0" type="checkbox" id="MaxEn" checked />
                         </div>
                         <span class="input-group-text mb-3">M</span>
-                        <input type="number " class="form-control mb-3" placeholder="Max AP " id="max" />
+                        <input type="number" class="form-control mb-3" placeholder="Max AP " id="max" />
                     </div>
                     <div class="input-group">
                         <div class="input-group-text mb-3">
                             <input class="form-check-input mt-0" type="checkbox" id="perEn" checked />
                         </div>
                         <span class="input-group-text mb-3">P</span>
-                        <input type="number " class="form-control mb-3" placeholder="Minutes per AP " id="perUnit" />
+                        <input type="number" class="form-control mb-3" placeholder="Minutes per AP " id="perUnit" />
                     </div><button type="submit " class="btn btn-primary mb-3 position-relative start-50"
                         onclick="return getData();">
                         Calculate
@@ -58,14 +77,13 @@
         </div>
     </div>
     <script>
-        window.addEventListener('DOMContentLoaded', function(){
+        window.addEventListener('DOMContentLoaded', function () {
             loadData();
+            let deadline = new Date();
+            initClock(deadline);
             console.log("here");
         });
-        //window.addEventListener('DOMContentLoaded', function(){
-        //    loadData();
-        //});
-        </script>
+    </script>
 </body>
 
 </html>

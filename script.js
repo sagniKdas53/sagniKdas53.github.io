@@ -3,76 +3,70 @@ let max = 0;
 let perUnit = 0;
 let now = 0;
 let end = 0;
-let value = {
-    "savedAt": "now",
-    "expiresAt": "end",
-    "perUnit": "perUnit",
-    "max": "max",
-    "current": "current"
-};
+let savedAt = 0;
+let expiresAt = 0;
 
 function loadData() {
     try {
-        value.savedAt = parseInt(Cookies.get("savedAt"));
-        value.expiresAt = parseInt(Cookies.get("ExpAt"));
-        value.perUnit = parseInt(Cookies.get("perUnit"));
-        value.max = parseInt(Cookies.get("max"));
-        value.current = parseInt(Cookies.get("current"));
-        //console.log(typeof value.max);
+        savedAt = parseInt(Cookies.get("savedAt"));
+        expiresAt = parseInt(Cookies.get("ExpAt"));
+        perUnit = parseInt(Cookies.get("perUnit"));
+        max = parseInt(Cookies.get("max"));
+        current = parseInt(Cookies.get("current"));
+        //console.log(typeof max);
         if (Cookies.get("saveMaxState") == 'true') {
             document.getElementById("MaxEn").checked = true;
-            document.getElementById("max").value = value.max;
+            document.getElementById("max").value = max;
         } else {
             document.getElementById("MaxEn").checked = false;
             document.getElementById("max").value = "";
         }
         if (Cookies.get("savePerState") == 'true') {
             document.getElementById("perEn").checked = true;
-            document.getElementById("perUnit").value = value.perUnit;
+            document.getElementById("perUnit").value = perUnit;
         } else {
             document.getElementById("perEn").checked = false;
             document.getElementById("perUnit").value = "";
         }
     } catch (err) {
-        console.log("Look a error " + err.message);
+        savedAt = 0;
+        expiresAt = 0;
+        perUnit = 0;
+        max = 0;
+        current = 0;
+        document.getElementById("MaxEn").checked = false;
+        document.getElementById("perEn").checked = false;
     }
 }
 
 function saveData() {
-    value = {
-        "savedAt": now,
-        "expiresAt": end,
-        "perUnit": perUnit,
-        "max": max,
-        "current": current
-    };
+    savedAt = now;
+    expiresAt = end;
 }
 
 function saveCookies() {
-    Cookies.set("max", max, { path: "", expiry: 30 });
-    Cookies.set("savedAt", value.savedAt, { path: "", expiry: 30 });
-    Cookies.set("ExpAt", value.expiresAt, { path: "", expiry: 30 });
-    Cookies.set("current", current, { path: "", expiry: 30 });
-    Cookies.set("perUnit", perUnit, { path: "", expiry: 30 });
-    Cookies.set("saveMaxState", document.getElementById("MaxEn").checked, { path: "", expiry: 30 });
-    Cookies.set("savePerState", document.getElementById("perEn").checked, { path: "", expiry: 30 });
-}
-
-function dispResult(str) {
-    document.getElementById("res").innerHTML = str;
-    return false;
+    Cookies.set("max", max, { expires: 30 });
+    Cookies.set("savedAt", savedAt, { expires: 30 });
+    Cookies.set("ExpAt", expiresAt, { expires: 30 });
+    Cookies.set("current", current, { expires: 30 });
+    Cookies.set("perUnit", perUnit, { expires: 30 });
+    Cookies.set("saveMaxState", document.getElementById("MaxEn").checked, { expires: 30 });
+    Cookies.set("savePerState", document.getElementById("perEn").checked, { expires: 30 });
 }
 
 function getData() {
     current = parseInt(document.getElementById("current").value);
     max = parseInt(document.getElementById("max").value);
     perUnit = parseInt(document.getElementById("perUnit").value);
-    now = Date.now();
-    end = getEnd();
-    saveData();
-    console.log(value);
-    saveCookies();
-    dispResult(getEndStr(getEnd() - now));
+    if (isNaN(current) || isNaN(max) || isNaN(perUnit)) {
+        alert("Fill up the fields");
+    } else {
+        now = Date.now();
+        end = getEnd();
+        saveData();
+        saveCookies();
+        updateClock();
+    }
     return false;
 }
 
@@ -80,14 +74,53 @@ function getEnd() {
     return parseInt(now + ((max - current) * perUnit) * 60000);
 }
 
-function getEndStr(duration) {
-    var seconds = Math.floor((duration / 1000) % 60);
-    var minutes = Math.floor((duration / (1000 * 60)) % 60);
-    var hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+// clock 
 
-    hours = (hours < 10) ? "0" + hours : hours;
-    minutes = (minutes < 10) ? "0" + minutes : minutes;
-    seconds = (seconds < 10) ? "0" + seconds : seconds;
-
-    return hours + ":" + minutes + ":" + seconds;
+function getTimeRemaining(endtime) {
+    const total = endtime - Date.parse(new Date());
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(total / (1000 * 60 * 60 * 24));
+    return {
+        total,
+        days,
+        hours,
+        minutes,
+        seconds
+    };
 }
+
+function initClock(endtime) {
+    const clock = document.getElementById('clockdiv');
+    const daysSpan = clock.querySelector('.days');
+    const hoursSpan = clock.querySelector('.hours');
+    const minutesSpan = clock.querySelector('.minutes');
+    const secondsSpan = clock.querySelector('.seconds');
+    const t = getTimeRemaining(endtime);
+
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+}
+
+function updateClock() {
+    console.log("clock loop");
+    const clock = document.getElementById('clockdiv');
+    const daysSpan = clock.querySelector('.days');
+    const hoursSpan = clock.querySelector('.hours');
+    const minutesSpan = clock.querySelector('.minutes');
+    const secondsSpan = clock.querySelector('.seconds');
+    const t = getTimeRemaining(end);
+
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+        clearInterval(timeinterval);
+    }else{
+    const timeinterval = setInterval(updateClock, 5000);
+}}
