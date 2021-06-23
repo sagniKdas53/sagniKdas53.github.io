@@ -107,8 +107,8 @@ function initClock(endtime) {
 }
 
 function updateClock() {
-    console.log("clock loop");
     accumulator += 1;
+    //console.log(accumulator);
     const clock = document.getElementById('clockdiv');
     const daysSpan = clock.querySelector('.days');
     const hoursSpan = clock.querySelector('.hours');
@@ -121,6 +121,8 @@ function updateClock() {
     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
     if (accumulator == ((perUnit * 60000) / refresh)) {
+        console.log('updated');
+        accumulator = 0;
         current = parseInt(document.getElementById("current").value) + 1;
         document.getElementById("current").value = current;
         Cookies.set("current", current, { expires: 30 });
@@ -130,7 +132,6 @@ function updateClock() {
         there is a log in savinng the cookies for example this: 1624391420967-1624391362958 = 58009
         insted of 60000
         */
-        accumulator = 0;
     }
     if (t.total <= 0) {
         clearInterval(timeinterval);
