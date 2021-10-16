@@ -1,0 +1,83 @@
+h1 {
+  font-size: 4rem;
+}
+p {
+  font-size: 1.5rem;
+}
+body {
+  margin: 0;
+  font-family: "Prompt", sans-serif;
+  color: white;
+  background: #ff0066;
+  overflow-x: hidden;
+}
+
+section {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  min-width: 50vw;
+  max-height: 50vw;
+  padding-top: 20vw;
+  flex-wrap: wrap;
+  align-content: stretch;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.top svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 72px;
+}
+
+.top .shape-fill {
+  fill: #f8e71c;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.bottom svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 158px;
+}
+
+.bottom .shape-fill {
+  fill: #f8e71c;
+}
+
+.spacer {
+  aspect-ratio: 900/450;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.transit {
+  background-image: url("data:image/svg+xml,%3Csvg id='visual' viewBox='0 0 900 450' width='900' height='450' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1'%3E%3Cpath d='M0 159L56 159L56 172L113 172L113 190L169 190L169 181L225 181L225 168L281 168L281 163L338 163L338 168L394 168L394 172L450 172L450 181L506 181L506 163L563 163L563 195L619 195L619 168L675 168L675 186L731 186L731 172L788 172L788 177L844 177L844 163L900 163L900 168L900 0L900 0L844 0L844 0L788 0L788 0L731 0L731 0L675 0L675 0L619 0L619 0L563 0L563 0L506 0L506 0L450 0L450 0L394 0L394 0L338 0L338 0L281 0L281 0L225 0L225 0L169 0L169 0L113 0L113 0L56 0L56 0L0 0Z' fill='%23ff0066'%3E%3C/path%3E%3Cpath d='M0 334L56 334L56 348L113 348L113 352L169 352L169 343L225 343L225 334L281 334L281 348L338 348L338 348L394 348L394 339L450 339L450 339L506 339L506 339L563 339L563 348L619 348L619 334L675 334L675 352L731 352L731 343L788 343L788 339L844 339L844 334L900 334L900 339L900 166L900 161L844 161L844 175L788 175L788 170L731 170L731 184L675 184L675 166L619 166L619 193L563 193L563 161L506 161L506 179L450 179L450 170L394 170L394 166L338 166L338 161L281 161L281 166L225 166L225 179L169 179L169 188L113 188L113 170L56 170L56 157L0 157Z' fill='%23f8e71c'%3E%3C/path%3E%3Cpath d='M0 451L56 451L56 451L113 451L113 451L169 451L169 451L225 451L225 451L281 451L281 451L338 451L338 451L394 451L394 451L450 451L450 451L506 451L506 451L563 451L563 451L619 451L619 451L675 451L675 451L731 451L731 451L788 451L788 451L844 451L844 451L900 451L900 451L900 337L900 332L844 332L844 337L788 337L788 341L731 341L731 350L675 350L675 332L619 332L619 346L563 346L563 337L506 337L506 337L450 337L450 337L394 337L394 346L338 346L338 346L281 346L281 332L225 332L225 341L169 341L169 350L113 350L113 346L56 346L56 332L0 332Z' fill='%23ff0066'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.flip {
+  transform: rotate(180deg);
+}
