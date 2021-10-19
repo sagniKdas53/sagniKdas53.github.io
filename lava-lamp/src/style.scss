@@ -31,7 +31,7 @@ body {
 .blob,
 .blobbase {
   fill: url(#blobfill);
-  filter: drop-shadow(0px 0px 10px rgba(209, 228, 165, 0.5));
+  filter: drop-shadow(0px 0px 10px rgba(228, 227, 165, 0.5));
 }
 .lamp.top,
 .lamp.bottom,
@@ -41,7 +41,7 @@ body {
 .lamp.body {
   fill: url(#liquidfill);
   opacity: 0.8;
-  filter: drop-shadow(0px 0px 5px #007c84);
+  filter: drop-shadow(0px 0px 5px #ffe3be);
 }
 
 #basemorphto {
