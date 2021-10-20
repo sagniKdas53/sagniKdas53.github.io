@@ -1,3 +1,4 @@
+// colours
 $white: #fff;
 $gray-100: #f8f9fa;
 $gray-200: #e9ecef;
@@ -9,7 +10,6 @@ $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
 $black: #000;
-
 $blue: #0d6efd;
 $indigo: #6610f2;
 $purple: #a06dff;
@@ -21,6 +21,7 @@ $green: #198754;
 $teal: #20c997;
 $cyan: #0dcaf0;
 
+//using the colours
 $primary: $purple;
 $secondary: $pink;
 $success: $green;
@@ -36,10 +37,6 @@ $body-text-align: null;
 
 $accordion-icon-color: $primary;
 $accordion-icon-active-color: $secondary;
-
-$accordion-button-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-color}'><path fill-rule='evenodd' d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z'/></svg>");
-
-$accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-active-color}'><path fill-rule='evenodd' d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z'/></svg>");
 
 $grid-gutter-width: 0px;
 $container-padding-x: 0px;
