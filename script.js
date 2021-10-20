@@ -1,3 +1,9 @@
+let random = function random(min, max, roundingIncrement, returnFunction) {
+    return _conditionalReturn(_isArray(min) ? !max : roundingIncrement === true ? !!(roundingIncrement = 0) : !returnFunction, function () {
+        return _isArray(min) ? min[~~(Math.random() * min.length)] : (roundingIncrement = roundingIncrement || 1e-5) && (returnFunction = roundingIncrement < 1 ? Math.pow(10, (roundingIncrement + "").length - 2) : 1) && Math.floor(Math.round((min - roundingIncrement / 2 + Math.random() * (max - min + roundingIncrement * .99)) / roundingIncrement) * roundingIncrement * returnFunction) / returnFunction;
+    });
+};
+
 var randomduration = gsap.utils.random(50, 100, 10, true);
 var randomx = gsap.utils.random(1, 5, 0.2, true);
 var randomy = gsap.utils.random(1, 8, 0.2, true);
