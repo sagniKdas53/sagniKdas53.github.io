@@ -3,7 +3,7 @@
     width: 20vw;
     height: 50vh;
     box-sizing: border-box;
-    background-color: #000000;
+    background-color: #00000000;
 }
 
 .blobpath {
@@ -13,12 +13,20 @@
 
 .blobbase {
     fill: url(#blobfill);
-    filter: drop-shadow(0px 0px 10px rgba(241, 209, 139, 0.5));
+    //filter: drop-shadow(0px 0px 10px rgba(241, 209, 139, 0.5));
+}
+
+.blobbase.base0 {
+    fill: url(#blobfill-darker);
+}
+
+.blobbase-hidden {
+    visibility: hidden;
 }
 
 .blob {
     fill: url(#blobfill);
-    filter: drop-shadow(0px 0px 10px rgba(253, 157, 102, 0.5));
+    //filter: drop-shadow(0px 0px 10px rgba(253, 213, 190, 0.5));
 }
 
 .lamp.top,
@@ -30,15 +38,7 @@
 .lamp.body {
     fill: url(#liquidfill);
     opacity: 0.8;
-    filter: drop-shadow(0px 0px 5px #f3df70);
-}
-
-#basemorphto1 {
-    visibility: hidden;
-}
-
-#basemorphto2 {
-    visibility: hidden;
+    //filter: drop-shadow(0px 0px 5px #fff4b4);
 }
 
 .table {

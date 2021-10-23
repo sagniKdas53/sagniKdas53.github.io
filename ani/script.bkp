@@ -205,3 +205,66 @@ anime({
     loop: true,
 
 });
+
+
+
+
+.add({
+    targets: '.blobs .two',
+    keyframes: node[1],
+}, 100).add({
+    targets: '.blobs .three',
+    keyframes: node[2],
+}, 100).add({
+    targets: '.blobs .four',
+    keyframes: node[3],
+    complete: function(anim) {
+        console.log('full timeline complete');
+        node = keyMaker(4, 5, 5, 70, 8000);
+    }
+}, 100);
+
+
+
+<defs id="defs34">
+                            <linearGradient id="bodyfill" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="100%"
+                                y2="0">
+                                <stop offset="0%" style="stop-color:#A7A3A0" />
+                                <stop offset="25%" style="stop-color:#CCC7C2" />
+                                <stop offset="50%" style="stop-color:#E0E1E2" />
+                                <stop offset="75%" style="stop-color:#CCC7C2" />
+                                <stop offset="100%" style="stop-color:#A7A3A0" />
+                            </linearGradient>
+                            <radialGradient id="liquidfill" cx="50" cy="41.1552" r="24.2406" fx="49.988" fy="51.2048"
+                                gradientTransform="matrix(1 0 0 1.5 0 -20.5776)" gradientUnits="userSpaceOnUse">
+                                <!--
+                                <stop offset="0.18" style="stop-color:#3b3d3d" />
+                                <stop offset="0.66" style="stop-color:#292a2b" />
+                                <stop offset="1" style="stop-color:#0b0c0c" />
+                                -->
+                                <stop offset="0.18" style="stop-color:#c9e5e5" />
+                                <stop offset="0.66" style="stop-color:#c6d3e0" />
+                                <stop offset="1" style="stop-color:#dae9e9" />
+                            </radialGradient>
+                            <radialGradient id="blobfill" cx="50" cy="41.1552" r="29.695" fx="49.2236" fy="68.4283"
+                                gradientTransform="matrix(1 0 0 1.5 0 -20.5776)" gradientUnits="objectBoundingBox">
+                                <stop offset="0.2" style="stop-color:#f1f7a1" />
+                                <stop offset="0.4" style="stop-color:#fff8b5" />
+                                <stop offset="0.6" style="stop-color:#f0ed68" />
+                                <stop offset="0.8" style="stop-color:#fff178" />
+                                <stop offset="0.8978" style="stop-color:#f88048" />
+                            </radialGradient>
+                            <clipPath id="blobclippath">
+                                <polygon points="32.4,70.5 39.8,11.8 60.2,11.8 67.6,70.5 " id="polygon31" />
+                            </clipPath>
+                        </defs>
+
+
+
+                        [{
+        d: "M 32.299996,70.5 H 67.6 l -0.5,-3.9 c 0,0 -6.4,-1.1 -9.000004,-1.1 -3.1,0 -10.1,2.5 -13.2,2.5 -2.4,0 -7,-1.4 -9.7,-1.4 -1.5,0 -2.5,0.6 -2.5,0.6 z"
+    },
+    {
+        d: "m 32.050341,69.761789 h 35.299999 l -0.5,-3.9 c 0,0 -4.07812,1.745653 -6.67812,1.745653 -3.1,0 -5.59927,-0.326971 -8.14927,-2.088971 -2.09002,-1.444507 -4.77804,-4.215175 -7.60638,-3.97687 -2.44259,0.205803 -6.763061,2.884525 -7.617584,3.598636 -1.151,0.962 -4.348645,1.321552 -4.348645,1.321552 z"
+    }
+]

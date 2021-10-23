@@ -1,13 +1,19 @@
-var logEl = document.querySelector('.log');
-var el = document.querySelector('.lava-lamp');
-var angle = document.querySelector('.angle');
+function showStats() {
+    var logEl = document.querySelector('.log');
+    var el = document.querySelector('.lava-lamp');
 
-logEl.innerHTML += '".lava-lamp" width is :';
-logEl.innerHTML += '"' + anime.get(el, 'width', 'px') + '"';
-logEl.innerHTML += ' or "' + anime.get(el, 'width', 'rem') + 'rem"<br>'
-logEl.innerHTML += '".lava-lamp" height is :';
-logEl.innerHTML += '"' + anime.get(el, 'height', 'px') + '"';
-logEl.innerHTML += ' or "' + anime.get(el, 'height', 'rem') + 'rem"'
+    logEl.innerHTML += '".lava-lamp" width is :';
+    logEl.innerHTML += '"' + anime.get(el, 'width', 'px') + '"';
+    logEl.innerHTML += ' or "' + anime.get(el, 'width', 'rem') + 'rem"<br>'
+    logEl.innerHTML += '".lava-lamp" height is :';
+    logEl.innerHTML += '"' + anime.get(el, 'height', 'px') + '"';
+    logEl.innerHTML += ' or "' + anime.get(el, 'height', 'rem') + 'rem"'
+}
+
+function hideStats() {
+    var logEl = document.querySelector('.log');
+    logEl.innerHTML = ""
+}
 
 function clip() {
     var clipTarge = document.getElementById('blobmotionarea');
@@ -19,7 +25,7 @@ function noClip() {
     clipTarge.removeAttribute('clip-path')
 }
 
-function keyMaker(nodes, num, conx, cony, cont) {
+function keyMakerAll(nodes, num, conx, cony, cont) {
     listnodes = [];
     for (var j = 0; j < nodes; j++) {
         list = []
@@ -34,21 +40,35 @@ function keyMaker(nodes, num, conx, cony, cont) {
     return listnodes;
 }
 
+function keyMaker(num, conx, cony, cont) {
+    list = []
+    for (var i = 0; i < num; i++) {
+        var key = { translateY: -anime.random(0, cony), translateX: anime.random(0, conx), duration: anime.random(2000, cont) }
+        list.push(key);
+    }
+    console.log('list:', list);
+    return list;
+}
 
-var blob1 = anime.timeline({
-    easing: 'easeOutBack',
+var node = keyMakerAll(4, 5, 5, 70, 3000);
+//var node = [];
+//node.push(keyMaker(5, 5, 70, 3000));
+var blob = anime.timeline({
+    easing: 'easeInOutSine',
+    //'easeOutBack',
     direction: 'alternate',
-    loop: true,
-    loopComplete: function() {
-        console.log('main timeline complete');
+    complete: function(blob) {
+        console.log('timeline complete');
+        node = keyMakerAll(4, 5, 5, 70, 3000);
+        blob.restart();
     }
 });
-var node = keyMaker(4, 5, 5, 70, 8000);
-blob1.add({
-    targets: '.blobs .one',
+
+blob.add({
+    targets: '.one',
     keyframes: node[0],
 }, 100).add({
-    targets: '.blobs .two',
+    targets: '.two',
     keyframes: node[1],
 }, 100).add({
     targets: '.blobs .three',
@@ -56,8 +76,29 @@ blob1.add({
 }, 100).add({
     targets: '.blobs .four',
     keyframes: node[3],
-    complete: function(anim) {
-        console.log('full timeline complete');
-        node = keyMaker(4, 5, 5, 70, 8000);
-    }
 }, 100);
+
+let shapes = document.querySelector('.base2');
+
+var blobase1 = anime({
+    targets: '.base1',
+    d: shapes.getAttribute('d'),
+    duration: 5000,
+    autoplay: true,
+    easing: 'easeInElastic',
+    direction: 'alternate',
+    elasticity: 100,
+    loop: true
+});
+let shapes1 = document.querySelector('.base3');
+
+var blobase2 = anime({
+    targets: '.base0',
+    d: shapes1.getAttribute('d'),
+    duration: 8000,
+    autoplay: true,
+    easing: 'easeInElastic',
+    direction: 'alternate',
+    elasticity: 60,
+    loop: true
+});
