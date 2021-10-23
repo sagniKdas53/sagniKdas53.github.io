@@ -20,7 +20,6 @@ $yellow: #ffc107;
 $green: #198754;
 $teal: #20c997;
 $cyan: #0dcaf0;
-
 //using the colours
 $primary: $purple;
 $secondary: $pink;
@@ -30,100 +29,105 @@ $warning: $yellow;
 $danger: $red;
 $light: $gray-100;
 $dark: $gray-900;
-
 $body-bg: #302a2f;
 $body-color: #e039d8;
 $body-text-align: null;
-
 $accordion-icon-color: $primary;
 $accordion-icon-active-color: $secondary;
-
 $grid-gutter-width: 0px;
 $container-padding-x: 0px;
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
+
 .side-b {
-  width: 3.5rem;
-  height: 100vh;
+    width: 3.5rem;
+    height: 100vh;
 }
 
 $border-color: #202421;
-
 .svg-area {
-  position: relative;
-  background-repeat: repeat;
-  background-size: contain;
+    position: relative;
+    background-repeat: repeat;
+    background-size: contain;
 }
 
 .svg-area.monitor {
-  width: 40vw;
-  height: 90vh;
+    width: 40vw;
+    height: 90vh;
 }
 
 .svg-area.monitor svg {
-  width: inherit;
-  height: inherit;
+    width: inherit;
+    height: inherit;
 }
 
 .svg-area.lava-lamp {
-  width: 20vw;
-  height: 50vh;
+    width: 20vw;
+    height: 50vh;
 }
 
 .svg-area.lava-lamp svg {
-  width: inherit;
-  height: inherit;
+    width: inherit;
+    height: inherit;
 }
 
 #lavalamp {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .blobpath {
-  fill: none;
-  stroke: none;
+    fill: none;
+    stroke: none;
 }
 
-.blob,
 .blobbase {
-  fill: url(#blobfill);
-  filter: drop-shadow(0px 0px 10px rgba(241, 209, 139, 0.5));
+    fill: url(#blobfill);
+    filter: drop-shadow(0px 0px 10px rgba(241, 209, 139, 0.5));
 }
+
+.blob {
+    fill: url(#blobfill);
+    filter: drop-shadow(0px 0px 10px rgba(253, 157, 102, 0.5));
+}
+
 .lamp.top,
 .lamp.bottom,
 .lamp.base {
-  fill: url(#bodyfill);
+    fill: url(#bodyfill);
 }
+
 .lamp.body {
-  fill: url(#liquidfill);
-  opacity: 0.8;
-  filter: drop-shadow(0px 0px 5px #f3df70);
+    fill: url(#liquidfill);
+    opacity: 0.8;
+    filter: drop-shadow(0px 0px 5px #f3df70);
 }
+
 #basemorphto1 {
-  visibility: hidden;
+    visibility: hidden;
 }
+
 #basemorphto2 {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 .table {
-  position: static;
-  background-repeat: repeat;
-  background-size: contain;
-  background-color: #c98520;
-  color: #000000 !important;
+    position: static;
+    background-repeat: repeat;
+    background-size: contain;
+    background-color: #c98520;
+    color: #000000 !important;
 }
 
 .monitor-text {
-  position: absolute;
-  left: 0px;
-  top: 5vh;
-  z-index: -1;
+    position: absolute;
+    left: 0px;
+    top: 5vh;
+    z-index: -1;
 }
 
 // scss-docs-end theme-color-variables
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";

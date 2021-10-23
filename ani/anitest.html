@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/MotionPathPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js" integrity="sha256-djMA3PhNFXq8E5a8C7LewmqcWubCqjny1nFxiPrqo9Q=" crossorigin="anonymous"></script>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 flex-fill">
+                <div class="svg-area lava-lamp">
+                    <svg width="100%" height="100%">
+                        <path class="blobpath path1b"
+                            d="m 26.520671,77.755878 c 3.146,-3.214 8.89,-36.494 -0.201,-40.394 -4.878,-2.093 1.445,-16.422 -11.357,-15.915 -8.7520002,0.346 2.058,14.287 0.479,18.131 -1.921,4.379 -14.0340002,8.324 -10.6560002,15.102 5.9780002,11.994 -0.753,19.731 3.59,18.521 10.0210002,-2.793 13.8050002,-1.605 17.8690002,4.695"
+                            style="fill:#f0ed68; stroke:#0b0c0c;stroke-width:3" vector-effect="non-scaling-stroke;" />
+                        <path class="blob one sep"
+                                d="m 51.299,75.069 c -1.795862,2.821778 -8.548302,2.975693 -10.200494,0.153916 -1.580358,-2.821778 1.939531,-8.516638 5.31575,-8.567943 3.37622,-0.10261 6.608771,5.540945 4.884744,8.414027"
+                                fill="#000000" style="stroke-width:0.60708" />
+                                <text x="0" y="15" fill="red">I love SVG!</text>
+
+                    </svg>
+
+                </div>
+                <div class="angle">
+
+                </div>
+            </div>
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 flex-fill">
+                <div class="d-block">
+                    Lamp
+                </div>
+                <div class="svg-area lava-lamp">
+                    <svg width="100%" height="100%" version="1.1" id="lavalamp" x="0px" y="0px" viewBox="0 0 36 100" style="enable-background:new 0 0 100 100;" xml:space="preserve" sodipodi:docname="base_rearr.svg" inkscape:version="1.1.1 (1:1.1+202109281949+c3084ef5ed)"
+                        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+
+                        <defs id="defs34">
+                            <linearGradient id="bodyfill" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="100%"
+                                y2="0">
+                                <stop offset="0%" style="stop-color:#A7A3A0" />
+                                <stop offset="25%" style="stop-color:#CCC7C2" />
+                                <stop offset="50%" style="stop-color:#E0E1E2" />
+                                <stop offset="75%" style="stop-color:#CCC7C2" />
+                                <stop offset="100%" style="stop-color:#A7A3A0" />
+                            </linearGradient>
+                            <radialGradient id="liquidfill" cx="50" cy="41.1552" r="24.2406" fx="49.988" fy="51.2048"
+                                gradientTransform="matrix(1 0 0 1.5 0 -20.5776)" gradientUnits="userSpaceOnUse">
+                                <stop offset="0.18" style="stop-color:#3b3d3d" />
+                                <stop offset="0.66" style="stop-color:#292a2b" />
+                                <stop offset="1" style="stop-color:#0b0c0c" />
+                            </radialGradient>
+                            <radialGradient id="blobfill" cx="50" cy="41.1552" r="29.695" fx="49.2236" fy="68.4283"
+                                gradientTransform="matrix(1 0 0 1.5 0 -20.5776)" gradientUnits="objectBoundingBox">
+                                <stop offset="0.2" style="stop-color:#f1f7a1" />
+                                <stop offset="0.4" style="stop-color:#fff8b5" />
+                                <stop offset="0.6" style="stop-color:#f0ed68" />
+                                <stop offset="0.8" style="stop-color:#fff178" />
+                                <stop offset="0.8978" style="stop-color:#f88048" />
+                            </radialGradient>
+                            <clipPath id="blobclippath">
+                                <polygon points="32.4,70.5 39.8,11.8 60.2,11.8 67.6,70.5 " id="polygon31" />
+                            </clipPath>
+                        </defs>
+                        <polygon class="lamp body" points="67.6,70.5 32.4,70.5 39.8,11.8 60.2,11.8 " id="body"
+                            transform="translate(-31.539654,0.55060927)" />
+                        <path class=" lamp top"
+                            d="m 8.2603461,12.350609 1.4,-9.1999997 c 0.2,-1.5 1.4999999,-2.60000003 2.8999999,-2.60000003 h 11.8 c 1.5,0 2.7,1.10000003 2.9,2.50000003 l 1.4,9.1999997 z"
+                            id="head" />
+                        <polygon class="lamp bottom" points="58.8,85.3 41.2,85.3 32.4,70.5 67.6,70.5 " id="base"
+                            transform="translate(-31.539654,0.55060927)" />
+                        <path class="lamp base"
+                            d="m 3.7603461,100.55061 c -2.3,0 -3.70000001,-2.500001 -2.5,-4.500001 l 8.4,-10.3 H 27.260346 l 8.4,10.3 c 1.2,2 -0.2,4.500001 -2.5,4.500001 z"
+                            id="leg" />
+                        <!--clip-path="url(#blobclippath)"-->
+                        <g class="blobs" id="blobmotionarea" transform="translate(-31.539654,0.55060927)">
+                            <path class="blob one"
+                                d="m 51.299,75.069 c -1.795862,2.821778 -8.548302,2.975693 -10.200494,0.153916 -1.580358,-2.821778 1.939531,-8.516638 5.31575,-8.567943 3.37622,-0.10261 6.608771,5.540945 4.884744,8.414027"
+                                fill="#000000" style="stroke-width:0.60708" />
+                            <path id="blob2" class="blob two"
+                                d="m 52.521,68.523936 c 2.214558,2.80644 10.580665,3.104996 12.549161,0.477692 1.906981,-2.687016 -2.522135,-8.299892 -6.705189,-8.419315 -4.183054,-0.179135 -8.05853,5.135185 -5.843972,7.941623"
+                                fill="#000000" style="stroke-width:0.606068" />
+                            <g id="blobgroup" transform="matrix(0.67353155,0,0,0.5847093,51.182797,53.993416)">
+                                <path id="groupblob1" class="blob three"
+                                    d="m 7.4934125,48.407101 c -2.6,5.7 -12.3,6.1 -14.5,0.6 -2.3,-5.4 2.9,-16.8 7.8,-17 4.8,-0.2 9.3000005,10.8 6.7,16.4"
+                                    fill="#000000" />
+                                <path id="groupblob2" class="blob four"
+                                    d="m 13.064277,28.733224 c 1.8,0.7 0.7,5.4 -1.6,7.7 -2.4000002,2.4 -6.0000002,2.4 -7.9000002,6.2 -1.8,3.9 -1.8,11.5 -3.19999999,12.9 -1.40000001,1.5 -4.30000001,-3.4 -8.40000001,-7.2 -4.1999998,-3.8 -9.6999998,-6.7 -8.2999998,-8.1 1.4,-1.4 9.7999998,-1.4 13.8999998,-2.1 4.2,-0.6 4.2,-2 6.6,-4.3 2.3,-2.4 7.0000002,-5.8 8.9000002,-5.1"
+                                    fill="#000000" />
+                            </g>
+                            <path class="blobpath" id="blobpath1"
+                                d="m 37.392908,74.064363 c 7.072996,-6.256 16.415996,-24.055 20.901996,-31.55 2.718,-4.542 7.343,-19.033999 -1.987,-22.159999 -8.29,-2.788 -14.805,3.487 -16.402,11.149 -0.978996,4.674999 -0.918996,9.909999 3.685,15.909999 5.896,7.8 20.445,21.844 20.753,26.365 0.296,4.277 -23.543,2.631 -26.950996,0.287"
+                                style="fill:none;stroke-width:16" vector-effect="non-scaling-stroke;" />
+                            <g id="basemorphgroup">
+                                <path class="blobbase"
+                                    d="M 32.299997,70.5 H 67.6 l -0.5,-3.9 c 0,0 -7.8,1 -10.5,1 -3.1,0 -9.1,-1 -12.2,-1 -2.4,0 -7.100003,0.5 -9.500003,0.6 -0.5,0 -2.2,0 -2.2,0 z"
+                                    id="basemorphto0" />
+                                <path id="basemorphto1"
+                                    d="M 32.299996,70.5 H 67.6 l -0.5,-3.9 c 0,0 -6.4,-1.1 -9.000004,-1.1 -3.1,0 -10.1,2.5 -13.2,2.5 -2.4,0 -7,-1.4 -9.7,-1.4 -1.5,0 -2.5,0.6 -2.5,0.6 z" />
+                                <path id="basemorphto2" visibility="hidden"
+                                    d="m 32.3,70.5 h 35.3 l -0.5,-3.9 c 0,0 -4.428,2.126 -7.028,2.126 -3.1,0 -4.915,-2.011 -7.465,-3.773 -3.895,-2.692 -9.291,1.54 -11.135,3.081 C 40.321,68.996 32.7,67.2 32.7,67.2 Z" />
+                            </g>
+                        </g>
+                        <path class="blobpath path1" id="blobpath2"
+                            d="m 26.520671,77.755878 c 3.146,-3.214 8.89,-36.494 -0.201,-40.394 -4.878,-2.093 1.445,-16.422 -11.357,-15.915 -8.7520002,0.346 2.058,14.287 0.479,18.131 -1.921,4.379 -14.0340002,8.324 -10.6560002,15.102 5.9780002,11.994 -0.753,19.731 3.59,18.521 10.0210002,-2.793 13.8050002,-1.605 17.8690002,4.695"
+                            style="fill:none;stroke-width:16" vector-effect="non-scaling-stroke;" />
+                        <path id="blobgrouppath" class="blobpath path2"
+                            d="m 19.759346,75.619609 c 6.4,-0.408 10.715,-6.438 11.553,-16.132 0.466,-5.432 -2.678,-28.387 -4.251,-37.201 -0.97,-5.398 -11.288,-14.5669995 -15.452,0.303 -1.869,6.673 -6.95,22.703 -4.749,33.203 1.6,7.393 6.899,20.228 12.899,19.828" />
+                    </svg>
+
+                </div>
+
+                <div class="table log">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button class="btn btn-warning" onclick="clip()">Hide</button>
+                        <button class="btn btn-warning" onclick="noClip()">Show</button>
+                    </div>
+                    <br>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

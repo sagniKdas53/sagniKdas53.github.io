@@ -1,16 +1,16 @@
-let random = function random(min, max, roundingIncrement, returnFunction) {
-    return _conditionalReturn(_isArray(min) ? !max : roundingIncrement === true ? !!(roundingIncrement = 0) : !returnFunction, function () {
-        return _isArray(min) ? min[~~(Math.random() * min.length)] : (roundingIncrement = roundingIncrement || 1e-5) && (returnFunction = roundingIncrement < 1 ? Math.pow(10, (roundingIncrement + "").length - 2) : 1) && Math.floor(Math.round((min - roundingIncrement / 2 + Math.random() * (max - min + roundingIncrement * .99)) / roundingIncrement) * roundingIncrement * returnFunction) / returnFunction;
-    });
-};
+//write a random of my own and also replace gsap with kute
 
-var randomduration = gsap.utils.random(50, 100, 10, true);
-var randomx = gsap.utils.random(1, 5, 0.2, true);
-var randomy = gsap.utils.random(1, 8, 0.2, true);
-var randomscale = gsap.utils.random(0.8, 1.2, 0.1, true);
+var randomduration = [50, 60, 70, 80, 90, 100][Math.floor(Math.random() * 6)]
+//gsap.utils.random(50, 100, 10, true);
+var randomx = [1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5][Math.floor(Math.random() * 21)]
+//gsap.utils.random(1, 5, 0.2, true);
+var randomy = [1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2, 6.4, 6.6, 6.8, 7, 7.2, 7.4, 7.6, 7.8, 8][Math.floor(Math.random() * 36)]
+//gsap.utils.random(1, 8, 0.2, true);
+var randomscale = [0.8, 0.9, 1, 1.1, 1.2][Math.floor(Math.random() * 5)]
+//gsap.utils.random(0.8, 1.2, 0.1, true);
 
 let lavalamp = gsap.timeline({ defaults: { duration: randomduration, repeat: -1, } });
-
+console.log([randomduration, randomscale, randomx, randomy])
 lavalamp
     .to(".blobbase", {
         ease: "circ.inOut",
