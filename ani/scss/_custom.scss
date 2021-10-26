@@ -21,6 +21,7 @@ $green: #198754;
 $teal: #20c997;
 $cyan: #0dcaf0;
 //using the colours
+$border-color: #202421;
 $primary: $purple;
 $secondary: $pink;
 $success: $green;
@@ -46,37 +47,20 @@ $container-padding-x: 0px;
     height: 100vh;
 }
 
-$border-color: #202421;
-.svg-area {
-    position: relative;
-    background-repeat: repeat;
-    background-size: contain;
+.monitor-text {
+    position: absolute;
+    left: 0px;
+    top: 5vh;
+    z-index: -1;
 }
 
-.svg-area.monitor {
-    width: 40vw;
-    height: 90vh;
-}
-
-.svg-area.monitor svg {
-    width: inherit;
-    height: inherit;
-}
-
+// scss-docs-end theme-color-variables
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 .svg-area.lava-lamp {
     width: 20vw;
     height: 50vh;
-}
-
-.svg-area.lava-lamp svg {
-    width: inherit;
-    height: inherit;
-}
-
-#lavalamp {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
+    background-color: #00000000;
 }
 
 .blobpath {
@@ -86,12 +70,25 @@ $border-color: #202421;
 
 .blobbase {
     fill: url(#blobfill);
-    filter: drop-shadow(0px 0px 10px rgba(241, 209, 139, 0.5));
+    //filter: drop-shadow(0px 0px 10px rgba(241, 209, 139, 0.5));
+}
+
+.blobbase.base0 {
+    fill: url(#blobfill-darker);
+}
+
+.blobbase-hidden {
+    visibility: hidden;
 }
 
 .blob {
     fill: url(#blobfill);
-    filter: drop-shadow(0px 0px 10px rgba(253, 157, 102, 0.5));
+    //filter: drop-shadow(0px 0px 10px rgba(253, 213, 190, 0.5));
+}
+
+.blob-dark {
+    fill: url(#blobfill-darker);
+    //filter: drop-shadow(0px 0px 10px rgba(253, 213, 190, 0.5));
 }
 
 .lamp.top,
@@ -103,31 +100,13 @@ $border-color: #202421;
 .lamp.body {
     fill: url(#liquidfill);
     opacity: 0.8;
-    filter: drop-shadow(0px 0px 5px #f3df70);
-}
-
-#basemorphto1 {
-    visibility: hidden;
-}
-
-#basemorphto2 {
-    visibility: hidden;
+    //filter: drop-shadow(0px 0px 5px #fff4b4);
 }
 
 .table {
     position: static;
     background-repeat: repeat;
     background-size: contain;
-    background-color: #c98520;
+    background-color: #b16a00;
     color: #000000 !important;
 }
-
-.monitor-text {
-    position: absolute;
-    left: 0px;
-    top: 5vh;
-    z-index: -1;
-}
-
-// scss-docs-end theme-color-variables
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";

@@ -11118,13 +11118,35 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.svg-area.lava-lamp {
+body {
+  background-color: #161616;
+  color: #fff;
+}
+
+.svg-area {
+  position: relative;
   width: 20vw;
   height: 50vh;
   box-sizing: border-box;
   background-color: #00000000;
 }
 
+.lava-lamp {
+  height: inherit;
+  background-color: inherit;
+  position: absolute;
+  bottom: 0;
+}
+
+@media screen and (max-width: 660px) {
+  .lava-lamp {
+    height: auto !important;
+    width: inherit;
+    background-color: inherit;
+    position: absolute;
+    bottom: 0;
+  }
+}
 .blobpath {
   fill: none;
   stroke: none;
@@ -11146,6 +11168,10 @@ textarea.form-control-lg {
   fill: url(#blobfill);
 }
 
+.blob-dark {
+  fill: url(#blobfill-darker);
+}
+
 .lamp.top,
 .lamp.bottom,
 .lamp.base {
@@ -11161,7 +11187,7 @@ textarea.form-control-lg {
   position: static;
   background-repeat: repeat;
   background-size: contain;
-  background-color: #c98520;
+  background-color: #b16a00;
   color: #000000 !important;
 }
 
