@@ -40,13 +40,7 @@ function keyMaker(numOfFrames, width, height, duration) {
 function keyMakerAll(nodes, numOfFrames, width, height, duration) {
     listnodes = [];
     for (var j = 0; j < nodes; j++) {
-        if (j == 1) {
-            width *= .8;
-        }
-        if (j >= 2) {
-            height *= 1.5;
-        }
-        listnodes.push(keyMaker3P(3, width, height, duration));
+        listnodes.push(keyMaker3P(numOfFrames, width, height, duration));
     }
     return listnodes;
 }
@@ -68,12 +62,18 @@ function keyMaker3P(numOfFrames, width, height, duration) {
     list = []
     var i;
     var tempAscent = 0;
-    var direction = 0;
+    var direction = direction = anime.random(0, 1);
+    if (direction == 0) {
+        dir = anime.random(0, width);
+    } else {
+        dir = -anime.random(0, width);
+    }
+    var key = { translateY: 0, translateX: dir, duration: anime.random(2000, duration), state: 'up', dir: direction }
+    list.push(key);
     var dir = 0
     var maxAscent = 0;
     while (height - tempAscent > 10) {
         tempAscent = anime.random(maxAscent, height)
-        direction = anime.random(0, 1);
         if (direction == 0) {
             dir = anime.random(0, width);
         } else {
@@ -103,64 +103,84 @@ function keyMaker3P(numOfFrames, width, height, duration) {
             dir = anime.random(0, width);
         }
         var key = { translateY: -tempAscent, translateX: dir, duration: anime.random(2000, duration), state: 'down', dir: direction }
-            //maxAscent = tempAscent;
         list.push(key);
     }
-    var key = { translateY: 0, translateX: 0, duration: anime.random(0, 2000) }
+    var key = { translateY: 0, translateX: 0, duration: anime.random(2000, duration), state: 'down', dir: direction }
     list.push(key);
-    console.log('list:', list);
+    //console.log('list:', list);
     return list;
+}
+
+function updateTimeLine(blob, duration) {
+    for (child of blob.children) { child['timelineOffset'] = anime.random(0, duration); }
+    //for (child of blob.children) { child['duration'] = anime.random(0, duration); }
+    //duration: blob.children[6]["duration"] / 2,
+
 }
 
 //defining the timeline's region of activity
 var path2 = document.getElementById('body');
 var heightP2 = Math.round(path2.getBBox()['height']);
-var widthP2 = Math.round(path2.getBBox()['width']) / 5;
-var node = keyMakerAll(7, 8, widthP2, heightP2, 4000);
+var widthP2 = Math.round(path2.getBBox()['width']) / 2.5;
+var duration = 4000;
+var nodeT1 = keyMakerAll(4, 2, widthP2, heightP2, duration);
+var nodeT2 = keyMakerAll(3, 2, widthP2, heightP2, duration);
 // the timeline
-var blob = anime.timeline({
+var T1 = anime.timeline({
     easing: 'easeInOutSine',
-    //'easeOutElastic',
-    //'easeOutBack',
-    //direction: 'alternate',
     elasticity: 60,
-    complete: function(blob) {
-        console.log('timeline complete');
-        //node = keyMakerAll(7, 8, widthP2, heightP2, 4000);
-        //blob.restart();
+    complete: function(T1) {
+        console.log('timeline one complete');
+        nodeT1 = keyMakerAll(4, 2, widthP2, heightP2, duration);
+        updateTimeLine(T1, duration);
+        T1.restart();
     }
 });
-document.querySelector('.play').onclick = blob.play;
-document.querySelector('.pause').onclick = blob.pause;
+var T2 = anime.timeline({
+    easing: 'easeInOutSine',
+    elasticity: 60,
+    complete: function(T2) {
+        console.log('timeline two complete');
+        nodeT2 = keyMakerAll(3, 2, widthP2, heightP2, duration);
+        updateTimeLine(T2, duration);
+        T2.restart();
+    }
+});
+document.querySelector('.play').onclick = T1.play;
+document.querySelector('.pause').onclick = T1.pause;
 
 // adding children to the timeline
-blob.add({
-    targets: '.one',
-    keyframes: node[0], // the keyframes used here
-}, 100).add({
-    targets: '.two',
-    keyframes: node[1],
-}, 100).add({
-    targets: '.three',
-    keyframes: node[2],
-}, 100).add({
-    targets: '.four',
-    keyframes: node[3],
-}, 100).add({
+T1.add({
+        targets: '.one',
+        keyframes: nodeT1[0], // the keyframes used here
+    }, anime.random(2000, duration))
+    .add({
+        targets: '.two',
+        keyframes: nodeT1[1],
+    }, anime.random(2000, duration)).add({
+        targets: '.three',
+        keyframes: nodeT1[2],
+    }, anime.random(2000, duration)).add({
+        targets: '.four',
+        keyframes: nodeT1[3],
+    }, anime.random(2000, duration));
+
+
+T2.add({
     targets: '.five',
-    keyframes: node[4],
-}, 100).add({
+    keyframes: nodeT2[0],
+}, anime.random(2000, duration)).add({
     targets: '.six',
-    keyframes: node[5],
-}, 100).add({
+    keyframes: nodeT2[1],
+}, anime.random(2000, duration)).add({
     targets: '.seven',
-    keyframes: node[6],
-}, 100);
+    keyframes: nodeT2[2],
+}, anime.random(2000, duration));
 
 // selctoers for blob-base animtion
 let shapes = document.querySelector('.base2');
 let shapes1 = document.querySelector('.base3');
-/* Add this later
+
 // animating blob base 2 using svg morph
 // animating blob base 1 using svg morph
 var blobase1 = anime({
@@ -184,16 +204,7 @@ var blobase2 = anime({
     elasticity: 60,
     loop: true
 });
-
-// applying svg mprph to blob one
-var blobone = anime({
-    targets: '.one',
-    d: 'm 51.299,75.069 c -7.257928,-0.02835 -9.110325,2.841953 -10.741626,0.03108 -0.687402,-2.429514 0.359615,-5.897828 3.638971,-5.991684 3.37622,-0.10261 8.826682,3.087525 7.102655,5.960607',
-    duration: 8000,
-    autoplay: true,
-    easing: 'easeInElastic',
-    direction: 'alternate',
-    elasticity: 60,
-    loop: true
-})
+/*
+The morph is not working properly nither can the duration be updated retroactively nor is the morphing effect smooth
+make seven alt shapes for the seven blobs
 */
