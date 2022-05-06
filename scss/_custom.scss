@@ -1,0 +1,20 @@
+$primary: #a06dff;
+$secondary: #d63384;
+$success: #198754;
+$warning: #ffc107;
+$body-bg: #302a2f;
+$body-color: #e039d8;
+$border-color: #202421;
+$body-text-align: null;
+$grid-gutter-width: 0px;
+$container-padding-x: 0px;
+* {
+  margin: 0;
+  padding: 0;
+}
+.side-b {
+  width: 3.5rem;
+  height: 100vh;
+}
+// scss-docs-end theme-color-variables
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
