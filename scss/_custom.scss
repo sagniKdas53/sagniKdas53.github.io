@@ -18,6 +18,37 @@ $container-padding-x: 0px;
   width: 3.5rem;
   height: 100vh;
 }
+.side-b svg {
+  height: auto;
+  width: auto;
+}
+
+.side-b img {
+  height: 2rem;
+  width: 2rem;
+  margin-top: 00.2rem;
+  margin-bottom: 00.2rem;
+}
+
+.intro {
+  flex-direction: column;
+}
+
+.intro h2,
+h4 {
+  margin-bottom: 0;
+  padding-left: 0.5rem;
+}
+.intro ol {
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+.intro ol > li {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
 svg {
   fill: rgba(255, 255, 255, 1);
   aspect-ratio: 1;

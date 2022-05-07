@@ -12,6 +12,41 @@
   height: 100vh;
 }
 
+.side-b svg {
+  height: auto;
+  width: auto;
+}
+
+.side-b img {
+  height: 2rem;
+  width: 2rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.intro {
+  flex-direction: column;
+}
+
+.intro h2, .intro .h2,
+h4,
+.h4 {
+  margin-bottom: 0;
+  padding-left: 0.5rem;
+}
+
+.intro ol {
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.intro ol > li {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
 svg {
   fill: rgb(255, 255, 255);
   aspect-ratio: 1;
