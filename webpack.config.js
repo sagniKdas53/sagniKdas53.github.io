@@ -17,6 +17,12 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.ttf$/,
+                use: [
+                    'url-loader',
+                ],
+            },
         ],
     },
     output: {
