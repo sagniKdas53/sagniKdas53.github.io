@@ -1,7 +1,12 @@
+/*deprecated functions
+1. this one shows the view box of the lavalamp
+2. hides the stats
+3. shows how the blobs animate
+4. hides how the blobs animate
+*/
 function showStats() {
     var logEl = document.querySelector('.log');
     var el = document.querySelector('.lava-lamp');
-
     logEl.innerHTML += '".lava-lamp" width is :';
     logEl.innerHTML += '"' + anime.get(el, 'width', 'px') + '"';
     logEl.innerHTML += ' or "' + anime.get(el, 'width', 'rem') + 'rem"<br>'
@@ -24,6 +29,7 @@ function noClip() {
     var clipTarge = document.getElementById('blobmotionarea');
     clipTarge.removeAttribute('clip-path')
 }
+// real stuff starts here
 // these functions make the keyframes for the timeline, that will be made below
 function keyMaker(numOfFrames, width, height, duration) {
     list = []
@@ -57,7 +63,12 @@ the direction has opposite effect.
 Notes: The ascending duration should be high, the translateX at top shoud be small and the descent should be medium.
 */
 
-//keymaker
+/*keymaker3p:
+the 3 p means three parts:
+asecent --> stay at top --> descent
+this takes in all the hight and makes key frames uning the above two funtions to make a reliatic 
+blob floating animation.
+*/
 function keyMaker3P(numOfFrames, width, height, duration) {
     list = []
     var i;
@@ -110,7 +121,7 @@ function keyMaker3P(numOfFrames, width, height, duration) {
     //console.log('list:', list);
     return list;
 }
-
+// seeds the timeline with new keyframes
 function updateTimeLine(blob, duration) {
     for (child of blob.children) { child['timelineOffset'] = anime.random(0, duration); }
     //for (child of blob.children) { child['duration'] = anime.random(0, duration); }
@@ -147,13 +158,9 @@ var T2 = anime.timeline({
     }
 });
 //Pauses the animation
-document.getElementById('pause').onclick = function () {
-    console.log("pause");
-    var v = T1.pause;
-    var c = T2.pause;
-}
+document.getElementById('pause').onclick = T1.pause;
 //Plays the animation
-document.getElementById('play').onclick = function () { console.log("play"); T1.play; T2.play; }
+document.getElementById('play').onclick = T1.play;
 // adding children to the timeline
 T1.add({
     targets: '.one',
