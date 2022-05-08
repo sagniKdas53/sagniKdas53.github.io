@@ -43,7 +43,8 @@ function keyMaker(numOfFrames, width, height, duration) {
     return list;
 }
 
-function keyMakerAll(nodes, numOfFrames, width, height, duration) {
+function keyMakerAll(nodes, numOfFrames, width, height, duration, init) {
+    console.log(init);
     listnodes = [];
     for (var j = 0; j < nodes; j++) {
         listnodes.push(keyMaker3P(numOfFrames, width, height, duration));
@@ -134,19 +135,25 @@ var path2 = document.getElementById('body');
 var heightP2 = Math.round(path2.getBBox()['height']);
 var widthP2 = Math.round(path2.getBBox()['width']) / 2.5;
 var duration = 4000;
-var nodeT1 = keyMakerAll(4, 2, widthP2, heightP2, duration);
-var nodeT2 = keyMakerAll(3, 2, widthP2, heightP2, duration);
+var nodeT1 = keyMakerAll(4, 2, widthP2, heightP2, duration, init = true);
+var nodeT2 = keyMakerAll(3, 2, widthP2, heightP2, duration, init = true);
+var progress = document.querySelector('.log');
 // the timeline
 var T1 = anime.timeline({
     easing: 'easeInOutSine',
     elasticity: 60,
     complete: function (T1) {
         console.log('timeline one complete');
-        nodeT1 = keyMakerAll(4, 2, widthP2, heightP2, duration);
+        nodeT1 = keyMakerAll(4, 2, widthP2, heightP2, duration, init = "one");
+        nodeT2 = keyMakerAll(3, 2, widthP2, heightP2, duration, init = "two");
         updateTimeLine(T1, duration);
         T1.restart();
+    },
+    update: function () {
+        progress.innerHTML = Math.round(T1.progress) + "%";
     }
 });
+/*
 var T2 = anime.timeline({
     easing: 'easeInOutSine',
     elasticity: 60,
@@ -156,7 +163,7 @@ var T2 = anime.timeline({
         updateTimeLine(T2, duration);
         T2.restart();
     }
-});
+});*/
 //Pauses the animation
 document.getElementById('pause').onclick = T1.pause;
 //Plays the animation
@@ -175,9 +182,17 @@ T1.add({
     }, anime.random(2000, duration)).add({
         targets: '.four',
         keyframes: nodeT1[3],
+    }, anime.random(2000, duration)).add({
+        targets: '.five',
+        keyframes: nodeT2[0],
+    }, anime.random(2000, duration)).add({
+        targets: '.six',
+        keyframes: nodeT2[1],
+    }, anime.random(2000, duration)).add({
+        targets: '.seven',
+        keyframes: nodeT2[3],
     }, anime.random(2000, duration));
-
-
+/*
 T2.add({
     targets: '.five',
     keyframes: nodeT2[0],
@@ -188,7 +203,7 @@ T2.add({
     targets: '.seven',
     keyframes: nodeT2[2],
 }, anime.random(2000, duration));
-
+*/
 // selctoers for blob-base animtion
 let shapes = document.querySelector('.base2');
 let shapes1 = document.querySelector('.base3');
@@ -219,4 +234,9 @@ var blobase2 = anime({
 /*
 The morph is not working properly nither can the duration be updated retroactively nor is the morphing effect smooth
 make seven alt shapes for the seven blobs
+*/
+/* Todo:
+Fix the clour scheme
+Make the blobs genrate using javascript
+Mak the buttons look like widget on windows vista that goes to the side.
 */
