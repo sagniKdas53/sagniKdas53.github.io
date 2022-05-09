@@ -1,0 +1,76 @@
+
+> sagnikdas53.github.io@1.0.0 compile
+> sass scss:./css/
+
+Deprecation Warning: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div(-$width, 2) or calc(-$width / 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+    ╷
+162 │   margin-left: -$width/2;
+    │                ^^^^^^^^^
+    ╵
+    scss/_custom.scss 162:16  @use
+    scss/style.scss 3:1       root stylesheet
+
+Deprecation Warning: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div(-$height, 2) or calc(-$height / 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+    ╷
+163 │   margin-top: -$height/2;
+    │               ^^^^^^^^^^
+    ╵
+    scss/_custom.scss 163:15  @use
+    scss/style.scss 3:1       root stylesheet
+
+Deprecation Warning: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div(-$width, 2) or calc(-$width / 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+    ╷
+193 │   margin-left: -$width/2;
+    │                ^^^^^^^^^
+    ╵
+    scss/_custom.scss 193:16  @use
+    scss/style.scss 3:1       root stylesheet
+
+Deprecation Warning: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($width, 2) or calc($width / 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+    ╷
+195 │   padding-left: $width/2;
+    │                 ^^^^^^^^
+    ╵
+    scss/_custom.scss 195:17  @use
+    scss/style.scss 3:1       root stylesheet
+
+Deprecation Warning: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($pi - $opening-angle, 2) or calc(($pi - $opening-angle) / 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+    ╷
+235 │     $angle: (($pi - $opening-angle)/2)+
+    │              ^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    scss/_custom.scss 235:14  @use
+    scss/style.scss 3:1       root stylesheet
+
+Error: Undefined operation "cos(0.1) * 115px".
+    ╷
+241 │         cos($angle) * $open-distance,
+    │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+  scss/_custom.scss 241:9  @use
+  scss/style.scss 3:1      root stylesheet
