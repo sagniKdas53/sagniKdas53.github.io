@@ -3,7 +3,7 @@
 ## Technologies used
 
 1. Node Js
-1. Sass
+1. Sass (used to compile scss)
 1. Bootstarp
 
 ## Setup to create the webpack

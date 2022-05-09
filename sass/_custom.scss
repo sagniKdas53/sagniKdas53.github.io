@@ -9,6 +9,7 @@ $border-color: #202421;
 $body-text-align: null;
 $grid-gutter-width: 0px;
 $container-padding-x: 0px;
+$size: 60px;
 * {
   margin: 0;
   padding: 0;
@@ -115,115 +116,107 @@ h4 {
 }
 
 // menu bar stuff
-//vars
-$fg: #ff4081;
-$bg: #3f51b5;
-$pi: 3.14;
 
-//config
-$menu-items: 5;
-$open-distance: 115px;
-$opening-angle: $pi - 0.2;
-
-%goo {
+.menu {
   filter: url("#shadowed-goo");
-  // debug
-  // background:rgba(255,0,0,0.2);
 }
-%ball {
-  background: $fg;
+
+.menu-item, .menu-open-button {
+  background: #d63384;
   border-radius: 100%;
-  width: 80px;
-  height: 80px;
-  margin-left: -40px;
+  width: 60px;
+  height: 60px;
+  margin-left: -calc(30px);
   position: absolute;
-  top: 20px;
+  top: calc($size / 4);
   color: white;
   text-align: center;
-  line-height: 80px;
+  line-height: 60px;
   transform: translate3d(0, 0, 0);
   transition: transform ease-out 200ms;
 }
+
 .menu-open {
   display: none;
 }
-.menu-item {
-  @extend %ball;
-}
+
 .hamburger {
-  $width: 25px;
-  $height: 3px;
-  width: $width;
-  height: $height;
+  width: 25px;
+  height: 3px;
   background: white;
   display: block;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: math.div(-$width, 2);
-  margin-top: math.div($height, 2);
+  margin-left: -12.5px;
+  margin-top: -1.5px;
   transition: transform 200ms;
 }
-$hamburger-spacing: 8px;
+
 .hamburger-1 {
-  transform: translate3d(0, -$hamburger-spacing, 0);
+  transform: translate3d(0, -8px, 0);
 }
+
 .hamburger-2 {
   transform: translate3d(0, 0, 0);
 }
+
 .hamburger-3 {
-  transform: translate3d(0, $hamburger-spacing, 0);
+  transform: translate3d(0, 8px, 0);
 }
-.menu-open:checked + .menu-open-button {
-  .hamburger-1 {
-    transform: translate3d(0, 0, 0) rotate(45deg);
-  }
-  .hamburger-2 {
-    transform: translate3d(0, 0, 0) scale(0.1, 1);
-  }
-  .hamburger-3 {
-    transform: translate3d(0, 0, 0) rotate(-45deg);
-  }
+
+.menu-open:checked + .menu-open-button .hamburger-1 {
+  transform: translate3d(0, 0, 0) rotate(45deg);
 }
+.menu-open:checked + .menu-open-button .hamburger-2 {
+  transform: translate3d(0, 0, 0) scale(0.1, 1);
+}
+.menu-open:checked + .menu-open-button .hamburger-3 {
+  transform: translate3d(0, 0, 0) rotate(-45deg);
+}
+
 .menu {
-  @extend %goo;
-  $width: 380px;
-  $height: 250px;
-  position: absolute;
+  position: relative;
   left: 50%;
-  margin-left: math.div(-$width, 2);
+  margin-left: -150px;
   padding-top: 20px;
-  padding-left: math.div($width, 2);
-  width: $width;
-  height: $height;
+  padding-left: 150px;
+  width: 300px;
+  height: 200px;
   box-sizing: border-box;
   font-size: 20px;
   text-align: left;
 }
 
-.menu-item {
-  &:hover {
-    background: white;
-    color: $fg;
-  }
-  @for $i from 1 through $menu-items {
-    &:nth-child(#{$i + 2}) {
-      transition-duration: 10ms+ (60ms * ($i));
-    }
-  }
+.menu-item:hover {
+  background: white;
+  color: #d63384;
+}
+.menu-item:nth-child(3) {
+  transition-duration: 70ms;
+}
+.menu-item:nth-child(4) {
+  transition-duration: 130ms;
+}
+.menu-item:nth-child(5) {
+  transition-duration: 190ms;
+}
+.menu-item:nth-child(6) {
+  transition-duration: 250ms;
 }
 
 .menu-open-button {
-  @extend %ball;
   z-index: 2;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition-duration: 400ms;
   transform: scale(1.1, 1.1) translate3d(0, 0, 0);
   cursor: pointer;
 }
+
 .menu-open-button:hover {
   transform: scale(1.2, 1.2) translate3d(0, 0, 0);
 }
+
 .menu-open:checked + .menu-open-button {
   transition-timing-function: linear;
   transition-duration: 200ms;
@@ -232,22 +225,25 @@ $hamburger-spacing: 8px;
 
 .menu-open:checked ~ .menu-item {
   transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
-  @for $i from 1 through $menu-items {
-    $angle: (
-      calc(calc($pi - $opening-angle) / 2) +
-        calc(calc($opening-angle / calc($menu-items - 1)) * calc($i - 1))
-    );
-
-    &:nth-child(#{$i + 2}) {
-      transition-duration: 80ms+ (80ms * $i);
-      transform: translate3d(
-        calc(cos($angle) * $open-distance),
-        calc(sin($angle) * $open-distance),
-        0
-      );
-    }
-  }
+  background: #ffc107;
 }
+.menu-open:checked ~ .menu-item:nth-child(3) {
+  transition-duration: 160ms;
+  transform: translate3d(64.67527px, 6.48917px, 0);
+}
+.menu-open:checked ~ .menu-item:nth-child(4) {
+  transition-duration: 240ms;
+  transform: translate3d(30.60194px, 57.34563px, 0);
+}
+.menu-open:checked ~ .menu-item:nth-child(5) {
+  transition-duration: 320ms;
+  transform: translate3d(-30.61383px, 57.33928px, 0);
+}
+.menu-open:checked ~ .menu-item:nth-child(6) {
+  transition-duration: 400ms;
+  transform: translate3d(-64.67661px, 6.47576px, 0);
+}
+
 
 // scss-docs-end theme-color-variables
 @import "../node_modules/bootstrap/scss/bootstrap.scss";

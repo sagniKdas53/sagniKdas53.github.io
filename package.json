@@ -8,7 +8,7 @@
     "compile": "sass scss:./css/",
     "build": "webpack",
     "serve": "serve",
-    "compile-watch": "sass --watch scss:./css/ "
+    "compile-watch": "sass --watch sass:./css/ "
   },
   "repository": {
     "type": "git",
