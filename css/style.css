@@ -107,17 +107,6 @@ h4,
   fill: url(#blobfill-darker);
 }
 
-.lamp.top,
-.lamp.bottom,
-.lamp.base {
-  fill: url(#bodyfill);
-}
-
-.lamp.body {
-  fill: url(#liquidfill);
-  opacity: 0.8;
-}
-
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

@@ -103,6 +103,7 @@ h4 {
   visibility: hidden;
 }
 
+
 .blob {
   fill: url(#blobfill);
   //filter: drop-shadow(0px 0px 10px rgba(253, 213, 190, 0.5));
@@ -113,17 +114,6 @@ h4 {
   //filter: drop-shadow(0px 0px 10px rgba(253, 213, 190, 0.5));
 }
 
-.lamp.top,
-.lamp.bottom,
-.lamp.base {
-  fill: url(#bodyfill);
-}
-
-.lamp.body {
-  fill: url(#liquidfill);
-  opacity: 0.8;
-  //filter: drop-shadow(0px 0px 5px #fff4b4);
-}
 // scss-docs-end theme-color-variables
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Open+Sans:wght@300&display=swap");
