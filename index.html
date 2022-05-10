@@ -18,7 +18,10 @@
     <script type="text/javascript" src="https://livejs.com/live.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"
         integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-    <!--  <script defer src="script.js"></script>-->
+    <script defer src="script.js"></script>
+    <!--Jquery remove it please
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>-->
     <!--Made a webpack surprizingly it was larger than both the css and js bunldes combined-->
     <!--<script src="dist/bundle.js"></script>-->
 </head>
@@ -65,8 +68,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="d-flex col intro">
-                    <h2>Hello! </h2>
-                    <h4>Interested in my page?</h4>
+                    <h2>Interested in my page? </h2>
+                    <h4>See how it's made in the repo.</h4>
                     <ol>
                         <li>
                             <h3>
@@ -115,34 +118,6 @@
                                                 <stop offset="75%" style="stop-color:#CCC7C2" id="stop8" />
                                                 <stop offset="100%" style="stop-color:#9c9a98" id="stop10" />
                                             </linearGradient>
-                                            <radialGradient id="liquidfill" cx="50" cy="41.1552" r="24.2406" fx="49.988"
-                                                fy="51.2048" gradientTransform="matrix(1 0 0 1.5 0 -20.5776)"
-                                                gradientUnits="userSpaceOnUse">
-                                                <stop offset="0.18" style="stop-color:#c9e5e5" id="stop13" />
-                                                <stop offset="0.66" style="stop-color:#c6d3e0" id="stop15" />
-                                                <stop offset="1" style="stop-color:#dae9e9" id="stop17" />
-                                            </radialGradient>
-                                            <radialGradient id="blobfill" cx="50" cy="41.1552" r="29.695" fx="49.2236"
-                                                fy="68.4283" gradientTransform="matrix(1 0 0 1.5 0 -20.5776)"
-                                                gradientUnits="objectBoundingBox">
-                                                <stop offset="0.2" style="stop-color:#f1f7a1" id="stop20" />
-                                                <stop offset="0.4" style="stop-color:#fff8b5" id="stop22" />
-                                                <stop offset="0.6" style="stop-color:#f0ed68" id="stop24" />
-                                                <stop offset="0.8" style="stop-color:#e7e09e" id="stop26" />
-                                                <stop offset="0.8978" style="stop-color:#fda67e" id="stop28" />
-                                                <stop offset="0.9785" style="stop-color:#fd867e" id="stop30" />
-                                            </radialGradient>
-                                            <radialGradient id="blobfill-darker" cx="50" cy="41.1552" r="29.695"
-                                                fx="49.2236" fy="68.4283"
-                                                gradientTransform="matrix(1 0 0 1.5 0 -20.5776)"
-                                                gradientUnits="objectBoundingBox">
-                                                <stop offset="0.2" style="stop-color:#f7bca1" id="stop33" />
-                                                <stop offset="0.4" style="stop-color:#ffd3b5" id="stop35" />
-                                                <stop offset="0.6" style="stop-color:#f0c568" id="stop37" />
-                                                <stop offset="0.8" style="stop-color:#e7bf9e" id="stop39" />
-                                                <stop offset="0.8978" style="stop-color:#fd7e7e" id="stop41" />
-                                                <stop offset="0.9785" style="stop-color:#f85656" id="stop43" />
-                                            </radialGradient>
                                             <clipPath id="blobclippath">
                                                 <polygon points="32.4,70.5 39.8,11.8 60.2,11.8 67.6,70.5 "
                                                     id="polygon31" />
@@ -230,6 +205,23 @@
                                     <h3 class="log">
                                         Progress here...
                                     </h3>
+
+                                    <div class="controls">
+                                        <div>
+                                            <label for="blur">Blur</label>
+                                            <input type="range" id="blur" min="0" max="40" value="16">
+                                        </div>
+
+                                        <div>
+                                            <label for="contrast">Contrast</label>
+                                            <input type="range" id="contrast" min="0" max="100" value="40">
+                                        </div>
+
+                                        <div>
+                                            <label for="contrast">Brightness</label>
+                                            <input type="range" id="brightness" min="0" max="2" value="1.4" step="0.1">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="position-relative top-10 start-10">
                                     <div id="menu">
@@ -243,12 +235,16 @@
                                             </label>
 
                                             <a href="#" class="menu-item">
-                                                <div class="btn" id="play"></div>
+                                                <button class="btn btn-warning btn-sm" id="play">Play</button>
                                             </a>
-                                            <a href="#" class="menu-item"> <i class="fa fa-plus"></i> </a>
-                                            <a href="#" class="menu-item"> <i class="fa fa-heart"></i> </a>
                                             <a href="#" class="menu-item">
-                                                <div class="btn" id="pause"></div>
+                                                <button class="btn btn-warning btn-sm" onclick="clip()">Hide</button>
+                                            </a>
+                                            <a href="#" class="menu-item">
+                                                <button class="btn btn-warning btn-sm" onclick="noClip()">Show</button>
+                                            </a>
+                                            <a href="#" class="menu-item">
+                                                <button class="btn btn-warning btn-sm" id="pause">Pause</button>
                                             </a>
 
 

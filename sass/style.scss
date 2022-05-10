@@ -1,3 +1,6 @@
 // npm run compile:sass to convert this to css
 
-@use 'custom';
+@use "bootstrap_mod";
+@use "menu";
+@use "lamp"; 
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Open+Sans:wght@300&display=swap");

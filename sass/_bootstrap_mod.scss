@@ -1,0 +1,64 @@
+@use "sass:math";
+$primary: #a06dff;
+$secondary: #d63384;
+$success: #198754;
+$warning: #ffc107;
+$body-bg: #302a2f;
+$body-color: #e039d8;
+$border-color: #202421;
+$body-text-align: null;
+$grid-gutter-width: 0px;
+$container-padding-x: 0px;
+$size: 60px;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
+}
+.side-b {
+  width: 3.5rem;
+  height: 100vh;
+}
+.side-b a {
+  padding: 0;
+  height: 4rem;
+  margin: 0;
+}
+.side-b .brand {
+  padding-left: 0.1rem;
+  padding-top: 0.1rem;
+  width: 3.5rem;
+  filter: invert(1);
+}
+.side-b .profile {
+  height: 2rem;
+  width: 2rem;
+  margin-top: 00.2rem;
+  margin-bottom: 00.2rem;
+}
+
+.intro {
+  flex-direction: column;
+}
+
+.intro h2,
+h4 {
+  margin-bottom: 0;
+  padding-left: 0.5rem;
+}
+.intro ol {
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+.intro ol > li {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 1rem;
+  height: 4rem;
+}
+// scss-docs-end theme-color-variables
+@import "../node_modules/bootstrap/scss/bootstrap.scss";

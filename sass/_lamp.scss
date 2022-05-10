@@ -1,0 +1,67 @@
+$blob: rgba(252, 195, 72, 0.856);
+$blob-dark: rgba(252, 108, 72, 0.884);
+$blur: 0.1px;
+$brightness: 1.5;
+$contrast: 30;
+.svg-area {
+  position: relative;
+  width: 30vw;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #00000000;
+}
+
+.lava-lamp {
+  height: inherit;
+  background-color: inherit;
+  position: absolute;
+  bottom: 0;
+}
+
+@media screen and (max-width: 660px) {
+  .lava-lamp {
+    height: auto !important;
+    width: inherit;
+    background-color: inherit;
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.blobpath {
+  fill: none;
+  stroke: none;
+  //filter: blur(rgba(255, 255, 168, 0.925));
+}
+
+.all-blobs {
+  filter: brightness($brightness) contrast($contrast);
+}
+
+.blobbase {
+  fill: $blob;
+  //clip-path: 'blobclippath'; //idk if this works or not
+  //filter: drop-shadow(0px 0px 10px rgba(241, 209, 139, 0.5));
+}
+
+.blobbase.base0 {
+  fill: $blob-dark;
+}
+
+.blobbase-hidden {
+  visibility: hidden;
+}
+
+.blob {
+  fill: $blob;
+  filter: blur($blur);
+  //filter: brightness($brightness) contrast($contrast) blur($blur);
+  //filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+}
+
+.blob-dark {
+  fill: $blob-dark;
+  filter: blur($blur);
+  //filter: brightness($brightness) contrast($contrast) blur($blur);
+  //filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+}
