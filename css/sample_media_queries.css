@@ -1,0 +1,45 @@
+@media screen and (max-width: 1420px) {
+  .svg-area {
+    position: relative;
+    width: 50vw;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  .lava-lamp {
+    height: auto !important;
+    width: inherit;
+    background-color: inherit;
+    position: absolute;
+    bottom: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .svg-area {
+    position: relative;
+    width: 50vw;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  .lava-lamp {
+    height: auto !important;
+    width: inherit;
+    background-color: inherit;
+    position: absolute;
+    bottom: 0;
+  }
+}
+@media screen and (max-width: 660px) {
+  .lava-lamp {
+    height: auto !important;
+    width: inherit;
+    background-color: inherit;
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+/*# sourceMappingURL=sample_media_queries.css.map */

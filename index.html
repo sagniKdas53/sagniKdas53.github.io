@@ -18,8 +18,8 @@
     <script type="text/javascript" src="https://livejs.com/live.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"
         integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-    <script defer src="script.js"></script>
-    <!--Jquery remove it please
+    <!--<script defer src="script.js"></script>
+    Jquery remove it please
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>-->
     <!--Made a webpack surprizingly it was larger than both the css and js bunldes combined-->
@@ -67,7 +67,7 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="d-flex col intro">
+                <div class="d-flex col d-none d-lg-block intro">
                     <h2>Interested in my page? </h2>
                     <h4>See how it's made in the repo.</h4>
                     <ol>
@@ -94,7 +94,7 @@
                             <div class="col svg-area">
                                 <div class="lava-lamp">
                                     <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-                                    <svg width="100%" height="100%" version="1.1" id="lavalamp" x="0px" y="0px"
+                                    <svg version="1.1" id="lavalamp" x="0px" y="0px"
                                         viewBox="0 0 36 100" style="enable-background:new 0 0 100 100;"
                                         xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink"
                                         xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
@@ -201,29 +201,31 @@
                                 </div>
                             </div>
                             <div class="col progress-anime">
-                                <div class="position-relative top-50 start-10 ">
-                                    <h3 class="log">
-                                        Progress here...
-                                    </h3>
+                                <div class="position-relative top-50">
+                                    <div class="menu">
+                                        <h3 class="log">
+                                            Progress here...
+                                        </h3>
+                                        <div class="controls d-none d-lg-block">
+                                            <div>
+                                                <label for="blur">Blur</label>
+                                                <input type="range" id="blur" min="0" max="40" value="16">
+                                            </div>
 
-                                    <div class="controls">
-                                        <div>
-                                            <label for="blur">Blur</label>
-                                            <input type="range" id="blur" min="0" max="40" value="16">
-                                        </div>
+                                            <div>
+                                                <label for="contrast">Contrast</label>
+                                                <input type="range" id="contrast" min="0" max="100" value="40">
+                                            </div>
 
-                                        <div>
-                                            <label for="contrast">Contrast</label>
-                                            <input type="range" id="contrast" min="0" max="100" value="40">
-                                        </div>
-
-                                        <div>
-                                            <label for="contrast">Brightness</label>
-                                            <input type="range" id="brightness" min="0" max="2" value="1.4" step="0.1">
+                                            <div>
+                                                <label for="contrast">Brightness</label>
+                                                <input type="range" id="brightness" min="0" max="2" value="1.4"
+                                                    step="0.1">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="position-relative top-10 start-10">
+                                <div class="position-relative top-10">
                                     <div id="menu">
                                         <nav class="menu">
                                             <input type="checkbox" href="#" class="menu-open" name="menu-open"
