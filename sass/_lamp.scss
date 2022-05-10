@@ -8,7 +8,7 @@ $contrast: 30;
   width: 30vw;
   height: 100vh;
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: #00000000;
 }
 
 .lava-lamp {
@@ -24,7 +24,8 @@ $contrast: 30;
 
 @media only screen and (max-width: 992px) {
   .lava-lamp {
-    height: 100vh !important;
+    height: auto !important;
+    width: 50vmin;
     background-color: inherit;
     position: absolute;
     bottom: 0;
@@ -33,7 +34,7 @@ $contrast: 30;
 @media only screen and (max-width: 425px) {
   .lava-lamp {
     height: auto !important;
-    width: 30vw;
+    width: 50vmin;
     background-color: inherit;
     position: absolute;
     bottom: 0;

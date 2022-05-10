@@ -11181,10 +11181,6 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-#menu {
-  float: right;
-}
-
 .menu {
   filter: url("#shadowed-goo");
 }
@@ -11317,7 +11313,7 @@ textarea.form-control-lg {
   width: 30vw;
   height: 100vh;
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .lava-lamp {
@@ -11334,7 +11330,8 @@ textarea.form-control-lg {
 
 @media only screen and (max-width: 992px) {
   .lava-lamp {
-    height: 100vh !important;
+    height: auto !important;
+    width: 50vmin;
     background-color: inherit;
     position: absolute;
     bottom: 0;
@@ -11343,7 +11340,7 @@ textarea.form-control-lg {
 @media only screen and (max-width: 425px) {
   .lava-lamp {
     height: auto !important;
-    width: 30vw;
+    width: 50vmin;
     background-color: inherit;
     position: absolute;
     bottom: 0;

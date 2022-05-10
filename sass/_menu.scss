@@ -20,9 +20,6 @@ $menu-items: 4;
 $open-distance: 70px;
 $opening-angle: $pi - 0.2;
 
-#menu {
-  float: right;
-}
 %goo {
   filter: url("#shadowed-goo");
   // debug

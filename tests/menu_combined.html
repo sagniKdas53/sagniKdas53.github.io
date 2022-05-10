@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="position-relative top-10">
+        <nav class="menu">
+            <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+            <label class="menu-open-button" for="menu-open">
+                <span class="hamburger hamburger-1"></span>
+                <span class="hamburger hamburger-2"></span>
+                <span class="hamburger hamburger-3"></span>
+            </label>
+
+            <a href="#" class="menu-item">
+                <button class="btn btn-warning btn-sm" id="play">Play</button>
+            </a>
+            <a href="#" class="menu-item">
+                <button class="btn btn-warning btn-sm" onclick="clip()">Hide</button>
+            </a>
+            <a href="#" class="menu-item">
+                <button class="btn btn-warning btn-sm" onclick="noClip()">Show</button>
+            </a>
+            <a href="#" class="menu-item">
+                <button class="btn btn-warning btn-sm" id="pause">Pause</button>
+            </a>
+
+
+        </nav>
+
+
+        <!-- filters -->
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+                <filter id="shadowed-goo">
+
+                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+                        result="goo" />
+                    <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
+                    <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2"
+                        result="shadow" />
+                    <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+                    <feBlend in2="shadow" in="goo" result="goo" />
+                    <feBlend in2="goo" in="SourceGraphic" result="mix" />
+                </filter>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+                        result="goo" />
+                    <feBlend in2="goo" in="SourceGraphic" result="mix" />
+                </filter>
+            </defs>
+        </svg>
+    </div>
+
+
+    <div class="position-relative top-50 menu">
+        <h3 class="log">
+            Progress here...
+        </h3>
+        <div class="controls d-none d-lg-block">
+            <div>
+                <label for="blur">Blur</label>
+                <input type="range" id="blur" min="0" max="40" value="16">
+            </div>
+
+            <div>
+                <label for="contrast">Contrast</label>
+                <input type="range" id="contrast" min="0" max="100" value="40">
+            </div>
+
+            <div>
+                <label for="contrast">Brightness</label>
+                <input type="range" id="brightness" min="0" max="2" value="1.4" step="0.1">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
