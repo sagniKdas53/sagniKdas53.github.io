@@ -20,9 +20,9 @@
         integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
     <script defer src="script.js"></script>
     <script defer src="controls.js"></script>
-    <!--Jquery remove it please
+    <!--Jquery remove it please-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>-->
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!--Made a webpack surprizingly it was larger than both the css and js bunldes combined-->
     <!--<script src="dist/bundle.js"></script>-->
 </head>
@@ -263,18 +263,19 @@
                                     </h3>
                                     <div class="controls d-none d-md-block">
                                         <div>
-                                            <label for="blur">Blur</label>
-                                            <input type="range" id="blur" min="0" max="40" value="16">
+                                            <label for="blur">Blur:</label><label id="blur-val"> 0</label>
+                                            <input type="range" id="blur" min="0" max="3" value="0" step="0.1">
                                         </div>
 
                                         <div>
-                                            <label for="contrast">Contrast</label>
+                                            <label for="contrast">Contrast:</label><label id="contrast-val"> 40</label>
                                             <input type="range" id="contrast" min="0" max="100" value="40">
                                         </div>
 
                                         <div>
-                                            <label for="contrast">Brightness</label>
-                                            <input type="range" id="brightness" min="0" max="2" value="1.4" step="0.1">
+                                            <label for="contrast">Brightness:</label><label
+                                                id="brightness-val"> 1.2</label>
+                                            <input type="range" id="brightness" min="0" max="2" value="1.2" step="0.1">
                                         </div>
                                     </div>
                                 </div>
