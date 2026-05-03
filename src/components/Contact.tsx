@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Mail, Phone } from 'lucide-react';
 import { GithubIcon } from './Icons';
-import ResumeButton from './ResumeButton';
+
+const ResumeButton = lazy(() => import('./ResumeButton'));
 
 const Contact: React.FC = () => {
   return (
@@ -10,7 +11,9 @@ const Contact: React.FC = () => {
       <p className="contact-sub">Open to new roles in QA Automation, SDET, or full-stack engineering. Let's talk.</p>
 
       <div id="resume-button-container">
-        <ResumeButton />
+        <Suspense fallback={<div style={{ height: '50px' }}>Loading Resume...</div>}>
+          <ResumeButton />
+        </Suspense>
       </div>
 
       <div className="contact-links">
