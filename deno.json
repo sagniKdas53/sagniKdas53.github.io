@@ -1,0 +1,19 @@
+{
+  "nodeModulesDir": "auto",
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "dom.asynciterable", "deno.ns"]
+  },
+  "tasks": {
+    "dev": "deno run -A npm:vite",
+    "build": "deno run -A npm:typescript/tsc -b && deno run -A npm:vite build",
+    "lint": "deno lint",
+    "preview": "deno run -A npm:vite preview"
+  },
+  "lint": {
+    "include": ["src/"],
+    "rules": {
+      "tags": ["recommended"],
+      "exclude": ["jsx-no-comment-text-nodes", "jsx-curly-braces"]
+    }
+  }
+}
