@@ -1,15 +1,15 @@
 import React, { Suspense, lazy } from 'react';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from './components/Navbar.tsx';
+import Footer from './components/Footer.tsx';
 import './index.css';
 
 // Lazy load sections for better performance and modularity
-const Hero = lazy(() => import('./components/Hero'));
-const Skills = lazy(() => import('./components/Skills'));
-const Experience = lazy(() => import('./components/Experience'));
-const Projects = lazy(() => import('./components/Projects'));
-const Certifications = lazy(() => import('./components/Certifications'));
-const Contact = lazy(() => import('./components/Contact'));
+const Hero = lazy(() => import('./components/Hero.tsx'));
+const Skills = lazy(() => import('./components/Skills.tsx'));
+const Experience = lazy(() => import('./components/Experience.tsx'));
+const Projects = lazy(() => import('./components/Projects.tsx'));
+const Certifications = lazy(() => import('./components/Certifications.tsx'));
+const Contact = lazy(() => import('./components/Contact.tsx'));
 
 // Loading fallback component
 const SectionLoader = () => (

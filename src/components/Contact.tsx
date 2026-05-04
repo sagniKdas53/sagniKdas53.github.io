@@ -1,8 +1,8 @@
 import React, { Suspense, lazy } from 'react';
 import { Mail, Phone } from 'lucide-react';
-import { GithubIcon } from './Icons';
+import { GithubIcon } from './Icons.tsx';
 
-const ResumeButton = lazy(() => import('./ResumeButton'));
+const ResumeButton = lazy(() => import('./ResumeButton.tsx'));
 
 const Contact: React.FC = () => {
   return (

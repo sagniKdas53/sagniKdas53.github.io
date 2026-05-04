@@ -1,6 +1,6 @@
 import React from 'react';
-import FlagshipProject from './FlagshipProject';
-import OtherProjects from './OtherProjects';
+import FlagshipProject from './FlagshipProject.tsx';
+import OtherProjects from './OtherProjects.tsx';
 
 const Projects: React.FC = () => {
   return (

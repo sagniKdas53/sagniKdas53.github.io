@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
-import { GithubIcon } from './Icons';
+import { GithubIcon } from './Icons.tsx';
 
 const Navbar: React.FC = () => {
   const [theme, setTheme] = useState<'dark' | 'light'>(

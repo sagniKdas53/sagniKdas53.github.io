@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import ResumePDF from './ResumePDF';
+import ResumePDF from './ResumePDF.tsx';
 import { Download, Loader2 } from 'lucide-react';
 
 const ResumeButton: React.FC = () => {
